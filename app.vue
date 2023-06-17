@@ -4,11 +4,15 @@ import HammerIcon from "~/assets/hammer.svg"
 import MicrophoneIcon from "~/assets/microphone.svg"
 import MastoIcon from "~/assets/masto.svg"
 import GithubIcon from "~/assets/github.svg"
+import BackgroundBg from "~/assets/background-bg.svg"
+import BackgroundFg from "~/assets/background-fg.svg"
 </script>
 
 <template>
   <header>
     <div class="header-content">
+      <div class="nav-bg"></div>
+
       <div class="bar3"></div>
       <div class="bar2"></div>
       <div class="bar1"></div>
@@ -39,14 +43,26 @@ import GithubIcon from "~/assets/github.svg"
     </div>
   </header>
 
+  <div class="background">
+    <div class="white"></div>
+    <BackgroundBg />
+    <div class="zigzags"></div>
+    <BackgroundFg />
+  </div>
+
+  <div class="spots"></div>
+
   <div>
     <NuxtPage />
   </div>
 </template>
 
 <style>
-html, body {
+html {
   background-color: #55ECC9;
+}
+
+html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -295,6 +311,98 @@ body.home {
 
   .nav-links, .social-links {
     top: -48px;
+  }
+}
+
+.background {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: none;
+  z-index: -1;
+
+  svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  div {
+    position: absolute;
+    width: 547.59px;
+    height: 1114.26px;
+    left: -100px;
+    bottom: -500px;
+
+    transform: rotate(-42.56deg);
+  }
+
+  .white {
+    background-color: white;
+  }
+
+  .zigzags {
+    background-image: url(~/assets/zigzags.png);
+  }
+}
+
+.spots {
+  display: none;
+  position: fixed;
+  width: 700px;
+  height: 400px;
+  right: -200px;
+  top: -100px;
+  z-index: -1;
+  
+  background-image: url(~/assets/spots.png);
+  background-size: 13px 26px;
+  transform: rotate(-39.41deg);
+  background-position-y: 6px;
+}
+
+@media (min-width: 40em) {
+  .background {
+    display: block;
+  }
+
+  .spots {
+    display: block;
+  }
+
+  body.home {
+    .bar1, .bar2, .bar3 {
+      height: 24px;
+      width: calc(100vw - 150px);
+    }
+
+    .nav-bg {
+      position: fixed;
+      right: 20px;
+      bottom: calc(20vh - 25px);
+      width: 440px;
+      height: 210px;
+      background: #FFFFFF;
+      border: 1px solid #000000;
+      box-shadow: 9px 10px 0px #000000;
+      transform: rotate(-4.23deg) translate3d(0, 0, 0);
+      z-index: -1;
+    }
+
+    .bar1 {
+      left: 53px;
+      top: 20px;
+    }
+
+    .bar2 {
+      left: 83px;
+      top: 53px;
+    }
+
+    .bar3 {
+      left: 113px;
+      top: 86px;
+    }
   }
 }
 </style>

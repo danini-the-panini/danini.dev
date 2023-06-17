@@ -157,28 +157,28 @@ dt {
     }
 
     @media (hover: hover) and (pointer: fine) {
-      .manicule {
-        &:not(.inverted) {
-          left: -100vw;
-          transition: left 200ms ease-in-out;
-        }
+      // .manicule {
+      //   &:not(.inverted) {
+      //     left: -100vw;
+      //     transition: left 200ms ease-in-out;
+      //   }
 
-        &.inverted {
-          right: -100vw;
-          transition: right 200ms ease-in-out;
-        }
-      }
+      //   &.inverted {
+      //     right: -100vw;
+      //     transition: right 200ms ease-in-out;
+      //   }
+      // }
 
       &:hover {
-        .manicule {
-          &:not(.inverted) {
-            left: 0;
-          }
+        // .manicule {
+        //   &:not(.inverted) {
+        //     left: 0;
+        //   }
 
-          &.inverted {
-            right: 0;
-          }
-        }
+        //   &.inverted {
+        //     right: 0;
+        //   }
+        // }
 
         span {
           transform: translateY(-4px);
@@ -258,6 +258,58 @@ dt {
         transform: translate3d(4px, -4px, 0px);
         box-shadow: -9px 8px 0px #000000;
       }
+    }
+  }
+}
+
+@media (min-width: 40em) {
+  .content {
+    overflow: visible;
+  }
+
+  dl {
+    transform: rotate(3deg);
+  }
+
+  .nav-links {
+    position: fixed;
+    right: 100px;
+    bottom: 20vh;
+
+    .blog {
+      margin-left: 60px;
+    }
+
+    .talks {
+      margin-left: 40px;
+    }
+
+    > * {
+      z-index: 2;
+    }
+  }
+
+  .social-links {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: fit-content;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      background: #5E91EB;
+      box-shadow: 9px 11px 0px #000000;
+      transform: rotate(7.15deg);
+      z-index: 1;
+    }
+
+    > * {
+      z-index: 2;
     }
   }
 }
