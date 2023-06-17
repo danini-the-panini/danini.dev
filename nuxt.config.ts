@@ -18,6 +18,10 @@ export default defineNuxtConfig({
   content: {
     navigation: {
       fields: ['publishedAt', 'tags']
+    },
+    highlight: {
+      theme: 'github-dark',
+      preload: ['bash', 'applescript', 'ruby', 'javascript', 'typescript']
     }
   }
 })

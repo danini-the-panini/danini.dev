@@ -24,7 +24,7 @@ import BackgroundFg from "~/assets/background-fg.svg"
           <NuxtLink to="/talks"><MicrophoneIcon /></NuxtLink>
         </div>
 
-        <h1>
+        <div class="logo">
           <NuxtLink to="/">
             <span>D</span>
             <span>a</span>
@@ -33,7 +33,7 @@ import BackgroundFg from "~/assets/background-fg.svg"
             <span>n</span>
             <span>i</span>
           </NuxtLink>
-        </h1>
+        </div>
 
         <div class="links social-links">
           <a href="https://toot.cat/@danini" target="_blank" rel="me noreferrer noopener"><MastoIcon /></a>
@@ -83,6 +83,7 @@ html, body {
 
 header {
   height: 48px;
+  width: 100%;
 }
 
 .header-content {
@@ -92,7 +93,7 @@ header {
 
 $header-anim-duration: 300ms;
 
-h1 {
+.logo {
   transition: transition(transform, $header-anim-duration),
     transition(margin, $header-anim-duration),
     transition(padding, $header-anim-duration),
@@ -108,7 +109,7 @@ h1 {
 
 .bar1, .bar2, .bar3 {
   height: 16px;
-  width: 100vw;
+  width: 100%;
   position: absolute;
   left: 0;
 
@@ -197,7 +198,7 @@ nav {
   display: flex;
 }
 
-h1 {
+.logo {
   position: relative;
   font-family: 'Cherry Bomb One', sans-serif;
   font-weight: 900;
@@ -243,7 +244,7 @@ h1 {
 }
 
 body:not(.home) {
-  h1 a {
+  .logo a {
     @for $i from 1 through 6 {
       span:nth-child(#{$i}) {
         animation-delay: 100ms * ($i - 1);
@@ -300,7 +301,7 @@ body.home {
     top: 66px;
   }
 
-  h1 {
+  .logo {
     font-size: 76px;
     margin-top: 40px;
     padding-left: 0;

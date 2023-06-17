@@ -14,7 +14,7 @@ useHead({
 </script>
 
 <template>
-  <div class="content">
+  <main>
     <dl>
       <dt>Species</dt>
       <dd>Human</dd>
@@ -60,11 +60,11 @@ useHead({
         <span>@danini-the-panini</span>
       </a>
     </nav>
-  </div>
+  </main>
 </template>
 
 <style scoped lang="scss">
-.content {
+main {
   position: fixed;
   width: 100%;
   top: 160px;
@@ -263,7 +263,7 @@ dt {
 }
 
 @media (min-width: 40em) {
-  .content {
+  main {
     overflow: visible;
   }
 
