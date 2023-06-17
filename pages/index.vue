@@ -88,8 +88,8 @@ dl {
   padding: 4px 16px 8px 32px;
   width: fit-content;
   position: relative;
-  align-self: end;
-  margin: 14px 7vw 0 12px;
+  align-self: center;
+  margin: 0;
 }
 
 dl::before {
@@ -129,7 +129,8 @@ dt {
   padding-left: 8px;
 
   a {
-    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Cherry Bomb One', sans-serif;
+    font-weight: 900;
     font-size: 48px;
     text-decoration: none;
     line-height: 1;

@@ -60,6 +60,11 @@ html, body {
 </style>
 
 <style scoped lang="scss">
+
+@function transition($name, $duration: 200ms, $easing: ease-in-out) {
+  @return $name $duration $easing;
+}
+
 header {
   height: 48px;
 }
@@ -69,9 +74,19 @@ header {
   padding: 0 8px;
 }
 
-h1, .bar1, .bar2, .bar3 {
+$header-anim-duration: 300ms;
+
+h1 {
+  transition: transition(transform, $header-anim-duration),
+    transition(margin, $header-anim-duration),
+    transition(padding, $header-anim-duration),
+    transition(text-shadow, $header-anim-duration),
+    transition(font-size, $header-anim-duration);
+}
+
+.bar1, .bar2, .bar3 {
   &, &:before, &:after {
-    transition: all 300ms ease-in-out;
+    transition: transition(all, $header-anim-duration);
   }
 }
 
@@ -167,18 +182,25 @@ nav {
 }
 
 h1 {
-  font-family: 'Cherry Bomb One', cursive;
+  position: relative;
+  font-family: 'Cherry Bomb One', sans-serif;
+  font-weight: 900;
   font-size: 32px;
   text-transform: uppercase;
-  margin: 0;
-  position: absolute;
-  left: 52%;
-  transform: rotate(-4.13deg) translateX(-50%);
-  top: -9px;
+  margin: 4px auto 0;
+  transform: rotate(-4.13deg);
   text-shadow: -2px 3px 0px #000000;
   color: white;
+  line-height: 1;
+  padding-left: 16px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
   span {
+    position: relative;
     -webkit-text-stroke: 0.02em black;
   }
 
@@ -201,15 +223,6 @@ h1 {
 
   100% {
     top: 0;
-  }
-}
-
-h1 a {
-  color: inherit;
-  text-decoration: none;
-
-  span {
-    position: relative;
   }
 }
 
@@ -245,7 +258,7 @@ body.home {
 
   .bar1, .bar2, .bar3 {
     height: 24px;
-    width: 80vw;
+    width: calc(100vw - 64px);
 
     transform: rotate(3deg);
 
@@ -272,10 +285,9 @@ body.home {
   }
 
   h1 {
-    position: absolute;
-    top: 40px;
-    left: 15px;
     font-size: 76px;
+    margin-top: 40px;
+    padding-left: 0;
     text-shadow: -3px 7px 0px #000000, -5px 12px 0px #7131C1;
 
     transform: rotate(-5.83deg);
