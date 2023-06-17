@@ -1,9 +1,15 @@
 <script setup>
-defineProps(['tags'])
+defineProps({
+  tags: Array,
+  link: {
+    type: Boolean,
+    default: true
+  }
+})
 </script>
 
 <template>
-  <div class="tags"><Tag v-for="tag of tags" :tag="tag" /></div>
+  <div class="tags"><Tag v-for="tag of tags" :tag="tag" :link="link" :key="tag" /></div>
 </template>
 
 <style scoped lang="scss">

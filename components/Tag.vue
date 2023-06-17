@@ -1,11 +1,18 @@
 <script setup>
-const props = defineProps(['tag'])
+const props = defineProps({
+  tag: String,
+  link: {
+    type: Boolean,
+    default: true
+  }
+})
 
-const route = `/blog/tags/${props.tag}`
+const routeTo = props.link ? `/blog/tags/${props.tag}` : null
 </script>
 
 <template>
-  <NuxtLink class="tag" :to="route"><span>{{tag}}</span></NuxtLink>
+  <NuxtLink class="tag" :to="routeTo" v-if="link"><span>{{tag}}</span></NuxtLink>
+  <div class="tag" v-else><span>{{tag}}</span></div>
 </template>
 
 <style scoped lang="scss">
@@ -25,12 +32,12 @@ const route = `/blog/tags/${props.tag}`
     transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
     padding: 0 4px;
   }
+}
 
-  &:hover {
-    span {
-      transform: translate3d(2px, -2px, 0);
-      box-shadow: -4px 6px 0px #000000;
-    }
+a.tag:hover {
+  span {
+    transform: translate3d(2px, -2px, 0);
+    box-shadow: -4px 6px 0px #000000;
   }
 }
 </style>

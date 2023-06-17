@@ -177,6 +177,11 @@ svg.microphone {
   filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.25));
 }
 
+svg.github {
+  height: 39px;
+  width: auto;
+}
+
 .links a {
   display: block;
 
