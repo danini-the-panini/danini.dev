@@ -71,7 +71,7 @@ header {
 
 h1, .bar1, .bar2, .bar3 {
   &, &:before, &:after {
-    transition: all 500ms ease-in-out;
+    transition: all 300ms ease-in-out;
   }
 }
 
@@ -83,7 +83,7 @@ h1, .bar1, .bar2, .bar3 {
 
   &::after {
     content: '';
-    width: 32px;
+    width: 24px;
     height: 0;
     position: absolute;
     top: 0;
@@ -153,9 +153,11 @@ svg.microphone {
     transform: translate3d(0, 0, 0);
   }
 
-  &:hover {
-    svg {
-      transform: translate3d(0, -4px, 0);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      svg {
+        transform: translate3d(0, -4px, 0);
+      }
     }
   }
 }
@@ -166,16 +168,25 @@ nav {
 
 h1 {
   font-family: 'Cherry Bomb One', cursive;
-  font-size: 39px;
+  font-size: 32px;
   text-transform: uppercase;
   margin: 0;
   position: absolute;
-  left: 50%;
+  left: 52%;
   transform: rotate(-4.13deg) translateX(-50%);
-  top: -14px;
-  -webkit-text-stroke: 1px black;
+  top: -9px;
   text-shadow: -2px 3px 0px #000000;
   color: white;
+
+  span {
+    -webkit-text-stroke: 0.02em black;
+  }
+
+  @for $i from 1 through 6 {
+    span:nth-child(#{$i}) {
+      z-index: 100 - $i;
+    }
+  }
 }
 
 @keyframes title-letter {
@@ -210,12 +221,14 @@ body:not(.home) {
       }
     }
 
-    &:hover {
-      span {
-        animation-name: title-letter;
-        animation-duration: 200ms;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: 1;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        span {
+          animation-name: title-letter;
+          animation-duration: 200ms;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: 1;
+        }
       }
     }
   }
@@ -231,7 +244,7 @@ body.home {
   }
 
   .bar1, .bar2, .bar3 {
-    height: 32px;
+    height: 24px;
     width: 80vw;
 
     transform: rotate(3deg);
@@ -239,7 +252,7 @@ body.home {
     box-shadow: 8px 8px 0px #000000;
 
     &::after {
-      height: 90vh;
+      height: 80vh;
     }
   }
 
@@ -249,20 +262,20 @@ body.home {
   }
 
   .bar2 {
-    left: 50px;
-    top: 42px;
+    left: 43px;
+    top: 33px;
   }
 
   .bar3 {
-    left: 87px;
-    top: 84px;
+    left: 73px;
+    top: 66px;
   }
 
   h1 {
     position: absolute;
     top: 40px;
     left: 15px;
-    font-size: 89px;
+    font-size: 76px;
     text-shadow: -3px 7px 0px #000000, -5px 12px 0px #7131C1;
 
     transform: rotate(-5.83deg);
