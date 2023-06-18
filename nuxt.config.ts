@@ -61,8 +61,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: 'https://danini.dev',
-      siteName: 'danini.dev',
-      siteDescription: 'Dani Smith - Full-stack ruby developer, drama queen, 90s kid',
+      siteName: 'Dani Smith',
+      siteDescription: 'Full-stack ruby developer, drama queen, 90s kid',
       language: 'en-ZA'
     }
   },
