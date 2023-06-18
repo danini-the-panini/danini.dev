@@ -8,29 +8,17 @@ defineOptions({
 </script>
 
 <template>
-  <div class="container w-full h-full flex items-center justify-center">
-    <img class="bg" src="/images/og-image-bg.png" width="1200" height="630" />
+  <div class="container w-full h-full flex items-center justify-center" :style="{
+    backgroundColor: '#55ECC9',
+    backgroundImage: 'url(\'https://danini.dev/images/og-image-bg.png\')',
+    width: '100%',
+    height: '100%',
+  }">
     <img :class="{ image: true, shadow }" :src="image" width="900" height="500" />
   </div>
 </template>
 
 <style scoped lang="scss">
-.container {
-  background-color: #55ECC9;
-  position: relative;
-  width: 100%;
-}
-
-svg {
-  position: relative;
-}
-
-img.bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 img.image {
   position: relative;
 }
