@@ -1,10 +1,18 @@
 <script setup lang="ts">
-defineProps(['image', 'shadow'])
+const props = defineProps(['image', 'shadow'])
 
 // inherited attrs can mess up the satori parser
 defineOptions({
   inheritAttrs: false
 })
+
+let imageStyle = {}
+if (props.shadow) {
+  imageStyle = {
+    border: '2px solid black',
+    boxShadow: '8px 8px 0px black'
+  }
+}
 </script>
 
 <template>
@@ -14,17 +22,6 @@ defineOptions({
     width: '100%',
     height: '100%',
   }">
-    <img :class="{ image: true, shadow }" :src="image" width="900" height="500" />
+    <img :class="{ image: true, shadow }" :src="image" width="900" height="500" :style="imageStyle" />
   </div>
 </template>
-
-<style scoped lang="scss">
-img.image {
-  position: relative;
-}
-
-img.shadow {
-  border: 2px solid black;
-  box-shadow: 8px 8px 0px black;
-}
-</style>
