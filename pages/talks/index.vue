@@ -5,7 +5,7 @@ import SlidesIcon from '~/assets/slides.svg'
 
 const { talkImage } = useTalkImages()
 
-useHead({ title: 'Talks - danini.dev' })
+useHead({ title: 'Talks' })
 </script>
 
 <template>

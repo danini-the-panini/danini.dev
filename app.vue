@@ -8,17 +8,16 @@ import BackgroundBg from "~/assets/background-bg.svg"
 import BackgroundFg from "~/assets/background-fg.svg"
 
 useHead({
-  title: 'Danini'
+  themeColor: '#55ECC9'
+})
+useSeoMeta({
+  ogImage: 'https://danini.dev/og_image.png'
 })
 </script>
 
 <template>
   <Head>
-    <link rel="icon" href="/favicon.ico" sizes="any"><!-- 32×32 -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
-    <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#55ECC9">
+    <SeoKit />
   </Head>
 
   <header>
@@ -49,7 +48,7 @@ useHead({
 
         <div class="links social-links">
           <a href="https://toot.cat/@danini" target="_blank" rel="me noreferrer noopener"><MastoIcon /></a>
-          <a href="https://github.com/danini-the-panini" target="_blank" rel="noreferrer noopener"><GithubIcon /></a>
+          <a href="https://github.com/danini-the-panini" target="_blank" rel="me noreferrer noopener"><GithubIcon /></a>
         </div>
       </nav>
     </div>

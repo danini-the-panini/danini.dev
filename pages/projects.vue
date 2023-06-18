@@ -5,7 +5,7 @@ import MicrophoneIcon from '~/assets/microphone.svg'
 
 const { projectImage } = useProjectImages()
 
-useHead({ title: 'Projects - danini.dev' })
+useHead({ title: 'Projects' })
 </script>
 
 <template>
