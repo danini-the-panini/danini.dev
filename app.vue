@@ -12,7 +12,7 @@ useHead({
 })
 defineOgImageStatic({
   component: 'DaniniOgImage',
-  image: '/images/danini-large.png'
+  text: 'danini'
 })
 </script>
 

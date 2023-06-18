@@ -5,17 +5,12 @@ import SlidesIcon from '~/assets/slides.svg'
 import ManiculeIcon from "~/assets/manicule.svg"
 
 const route = useRoute()
-
-defineOgImageStatic({
-  component: 'DaniniOgImage',
-  image: `/images${route.path}.png`,
-  shadow: true
-})
 </script>
 
 <template>
   <ArticleLayout>
     <ContentQuery :path="route.path" v-slot="{ data }" find="one">
+      <OgImageStatic component="TalkOgImage" :image="`/images${route.path}.png`" />
       <header>
         <h1>{{data.title}}</h1>
         <span class="date">{{formatDate(data.date)}}</span>

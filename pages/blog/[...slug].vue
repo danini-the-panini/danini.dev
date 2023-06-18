@@ -1,11 +1,17 @@
 <script setup>
 const route = useRoute()
+
+defineOgImageStatic({
+  component: 'DaniniOgImage',
+  text: 'blog'
+})
 </script>
 
 <template>
   <ArticleLayout>
       <header>
         <ContentQuery :path="route.path" v-slot="{ data }" find="one">
+          <OgImageStatic component="PostOgImage" :title="data.title" :date="data.publishedAt"/>
           <TagsList :tags="data.tags" />
           <span class="date">{{formatDate(data.publishedAt)}}</span>
         </ContentQuery>

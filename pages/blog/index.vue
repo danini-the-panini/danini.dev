@@ -7,6 +7,10 @@ useHead({
 useSeoMeta({
   description: 'Where I occasionally share some thoughts on the interwebs'
 })
+defineOgImageStatic({
+  component: 'DaniniOgImage',
+  text: 'blog'
+})
 </script>
 
 <template>

@@ -9,6 +9,10 @@ useHead({
 useSeoMeta({
   description: 'Various presentations that I have given at conferences and meetups'
 })
+defineOgImageStatic({
+  component: 'DaniniOgImage',
+  text: 'talks'
+})
 </script>
 
 <template>

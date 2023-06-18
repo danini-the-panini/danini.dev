@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps(['text'])
+defineProps(['tag'])
 
 // inherited attrs can mess up the satori parser
 defineOptions({
@@ -12,8 +12,20 @@ defineOptions({
     backgroundColor: '#55ECC9',
     backgroundImage: 'url(https://danini.dev/images/og-image-bg.png)',
     width: '100%',
-    height: '100%',
+    height: '100%'
   }">
-    <img :src="`/images/${text}-large.png`" />
+    <div :style="{
+      maxWidth: '80%',
+      maxHeight: '80%',
+      fontSize: '96px',
+      textAlign: 'center',
+      backgroundColor: '#FDFDA3',
+      padding: '16px 32px',
+      border: '2px solid black',
+      boxShadow: '8px 8px 0px black',
+      transform: 'rotate(-4deg)'
+    }">
+      {{ tag }}
+    </div>
   </div>
 </template>

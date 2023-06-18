@@ -1,10 +1,15 @@
 <script setup lang="ts">
-defineProps(['text'])
+defineProps(['image'])
 
 // inherited attrs can mess up the satori parser
 defineOptions({
   inheritAttrs: false
 })
+
+const imageStyle = {
+  border: '2px solid black',
+  boxShadow: '8px 8px 0px black'
+}
 </script>
 
 <template>
@@ -14,6 +19,6 @@ defineOptions({
     width: '100%',
     height: '100%',
   }">
-    <img :src="`/images/${text}-large.png`" />
+    <img :src="image" width="900" height="500" :style="imageStyle" />
   </div>
 </template>
