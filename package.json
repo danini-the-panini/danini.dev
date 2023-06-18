@@ -18,6 +18,7 @@
     "vite-svg-loader": "^4.0.0"
   },
   "dependencies": {
+    "nuxt-og-image": "^2.0.0-beta.58",
     "remove": "^0.1.5"
   }
 }

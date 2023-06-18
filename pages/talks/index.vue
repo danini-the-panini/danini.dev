@@ -25,7 +25,7 @@ useSeoMeta({
             </div>
           </header>
           <ContentRenderer :value="talk" class="description" />
-          <NuxtPicture format="avif,webp" :src="`/images${talk._path}.png`" />
+          <NuxtImg format="webp" :src="`/images${talk._path}.png`" />
           <div class="date">{{ formatDate(talk.date) }}</div>
         </NuxtLink>
       </li>
@@ -85,17 +85,11 @@ h2 {
   flex-shrink: 0;
 }
 
-picture, img {
+img {
   width: 100%;
-  height: fit-content;
+  height: auto;
   border: 1px solid black;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
-
-  :deep(img) {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
 }
 
 svg.github {

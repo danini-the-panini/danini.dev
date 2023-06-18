@@ -6,12 +6,14 @@ import MastoIcon from "~/assets/masto.svg"
 import GithubIcon from "~/assets/github.svg"
 import BackgroundBg from "~/assets/background-bg.svg"
 import BackgroundFg from "~/assets/background-fg.svg"
+import DaniniLarge from '~/assets/danini-large.png'
 
 useHead({
   themeColor: '#55ECC9'
 })
-useSeoMeta({
-  ogImage: 'https://danini.dev/og_image.png'
+defineOgImageStatic({
+  component: 'DaniniOgImage',
+  image: DaniniLarge
 })
 </script>
 

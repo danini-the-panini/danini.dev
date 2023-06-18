@@ -6,8 +6,10 @@ import ManiculeIcon from "~/assets/manicule.svg"
 
 const route = useRoute()
 
-useSeoMeta({
-  ogImage: `https://danini.dev/images${route.path}.png`
+defineOgImageStatic({
+  component: 'DaniniOgImage',
+  image: `/images${route.path}.png`,
+  shadow: true
 })
 </script>
 
