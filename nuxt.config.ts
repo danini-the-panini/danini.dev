@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxtjs/google-fonts',
+    '@nuxt/image'
   ],
 
   extends: [
@@ -30,6 +31,10 @@ export default defineNuxtConfig({
       'Cherry+Bomb+One': true,
       Caveat: true
     }
+  },
+
+  image: {
+    provider: 'ipx'
   },
 
   app: {

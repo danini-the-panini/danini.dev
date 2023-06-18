@@ -20,7 +20,7 @@ useSeoMeta({
           <ProjectTag v-for="tag in project.tags" :tag="tag" :key="tag" />
         </div>
         <TagsList :tags="project.tools" :link="false" />
-        <img :src="`/images${project._path}.png`" />
+        <NuxtPicture format="avif,webp" :src="`/images${project._path}.png`" />
         <ContentRenderer :value="project" />
         <div class="links">
           <a :href="project.repo" rel="noopener noreferrer" target="_blank" v-if="project.repo">
@@ -77,11 +77,17 @@ h2 {
   right: 12px;
 }
 
-img {
+picture, img {
   width: 100%;
-  height: auto;
+  height: fit-content;
   border: 1px solid black;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  :deep(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
 .tags {

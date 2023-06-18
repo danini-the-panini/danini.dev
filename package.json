@@ -9,6 +9,7 @@
   "devDependencies": {
     "@nuxt/content": "^2.6.0",
     "@nuxt/devtools": "^0.6.1",
+    "@nuxt/image": "^1.0.0-rc.1",
     "@nuxtjs/google-fonts": "^3.0.1",
     "@types/node": "^18.15.12",
     "nuxt": "^3.5.2",
@@ -16,5 +17,7 @@
     "sass": "^1.63.4",
     "vite-svg-loader": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "remove": "^0.1.5"
+  }
 }
