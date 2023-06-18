@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     public: {
       siteUrl: 'https://danini.dev',
       siteName: 'danini.dev',
-      siteDescription: 'Personal website of Dani Smith',
+      siteDescription: 'Dani Smith - Full-stack ruby developer, drama queen, 90s kid',
       language: 'en-ZA'
     }
   },

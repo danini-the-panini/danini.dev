@@ -3,9 +3,12 @@ import GithubIcon from '~/assets/github_smol.svg'
 import YoutubeIcon from '~/assets/youtube.svg'
 import SlidesIcon from '~/assets/slides.svg'
 
-const { talkImage } = useTalkImages()
-
-useHead({ title: 'Talks' })
+useHead({
+  title: 'Talks'
+});
+useSeoMeta({
+  description: 'Various presentations that I have given at conferences and meetups'
+})
 </script>
 
 <template>
@@ -22,7 +25,7 @@ useHead({ title: 'Talks' })
             </div>
           </header>
           <ContentRenderer :value="talk" class="description" />
-          <img :src="talkImage(talk)" />
+          <img :src="`/images${talk._path}.png`" />
           <div class="date">{{ formatDate(talk.date) }}</div>
         </NuxtLink>
       </li>

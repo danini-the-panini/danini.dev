@@ -5,6 +5,10 @@ import SlidesIcon from '~/assets/slides.svg'
 import ManiculeIcon from "~/assets/manicule.svg"
 
 const route = useRoute()
+
+useSeoMeta({
+  ogImage: `https://danini.dev/images${route.path}.png`
+})
 </script>
 
 <template>

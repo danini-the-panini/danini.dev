@@ -1,7 +1,12 @@
 <script setup>
 const query = queryContent('blog')
 
-useHead({ title: 'Blog' })
+useHead({
+  title: 'Blog'
+})
+useSeoMeta({
+  description: 'Where I occasionally share some thoughts on the interwebs'
+})
 </script>
 
 <template>

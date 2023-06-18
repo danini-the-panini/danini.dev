@@ -3,9 +3,12 @@ import GithubIcon from '~/assets/github_smol.svg'
 import BookIcon from '~/assets/book.svg'
 import MicrophoneIcon from '~/assets/microphone.svg'
 
-const { projectImage } = useProjectImages()
-
-useHead({ title: 'Projects' })
+useHead({
+  title: 'Projects'
+})
+useSeoMeta({
+  description: 'Things I have built, hacked, or tinkered with in my lifetime'
+})
 </script>
 
 <template>
@@ -17,7 +20,7 @@ useHead({ title: 'Projects' })
           <ProjectTag v-for="tag in project.tags" :tag="tag" :key="tag" />
         </div>
         <TagsList :tags="project.tools" :link="false" />
-        <img :src="projectImage(project)" />
+        <img :src="`/images${project._path}.png`" />
         <ContentRenderer :value="project" />
         <div class="links">
           <a :href="project.repo" rel="noopener noreferrer" target="_blank" v-if="project.repo">
