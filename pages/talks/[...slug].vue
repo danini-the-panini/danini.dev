@@ -44,7 +44,6 @@ h1 {
 }
 
 .date {
-  align-self: flex-start;
   font-size: 16px;
   color: #818181;
   font-family: 'Caveat', cursive;

@@ -5,7 +5,7 @@ import SlidesIcon from '~/assets/slides.svg'
 
 const { talkImage } = useTalkImages()
 
-useHead({ title: 'Talks - Danini' })
+useHead({ title: 'Talks - danini.dev' })
 </script>
 
 <template>
@@ -13,12 +13,14 @@ useHead({ title: 'Talks - Danini' })
     <GridLayout class="layout" title="Talks">
       <li v-for="talk of data" :key="talk._path">
         <NuxtLink :to="talk._path">
-          <h2>
-            <span>{{ talk.title }}</span>
-            <GithubIcon v-if="talk.repo" />
-            <YoutubeIcon v-if="talk.video" />
-            <SlidesIcon v-if="talk.slides" />
-          </h2>
+          <header>
+            <h2>{{ talk.title }}</h2>
+            <div class="icons">
+              <GithubIcon v-if="talk.repo" />
+              <YoutubeIcon v-if="talk.video" />
+              <SlidesIcon v-if="talk.slides" />
+            </div>
+          </header>
           <ContentRenderer :value="talk" class="description" />
           <img :src="talkImage(talk)" />
           <div class="date">{{ formatDate(talk.date) }}</div>
@@ -61,16 +63,23 @@ li {
   }
 }
 
+header {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
 h2 {
   text-decoration: underline;
   margin: 0;
+  margin-right: auto;
+}
+
+.icons {
   display: flex;
   gap: 2px;
   align-items: center;
-  
-  span {
-    margin-right: auto;
-  }
+  flex-shrink: 0;
 }
 
 img {

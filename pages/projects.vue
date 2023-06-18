@@ -5,7 +5,7 @@ import MicrophoneIcon from '~/assets/microphone.svg'
 
 const { projectImage } = useProjectImages()
 
-useHead({ title: 'Projects - Danini' })
+useHead({ title: 'Projects - danini.dev' })
 </script>
 
 <template>
@@ -49,7 +49,7 @@ li {
   background-color: white;
   width: 100%;
   max-width: 350px;
-  padding: 8px 16px;
+  padding: 16px 16px 8px;
   display: flex;
   flex-direction: column;
   gap: 8px;

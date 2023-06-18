@@ -7,6 +7,7 @@ import GithubIcon from "~/assets/github.svg"
 import ManiculeIcon from "~/assets/manicule.svg"
 
 useHead({
+  title: 'danini.dev',
   bodyAttrs: {
     class: 'home'
   }

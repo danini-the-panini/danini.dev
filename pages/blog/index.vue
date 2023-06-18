@@ -1,7 +1,7 @@
 <script setup>
 const query = queryContent('blog')
 
-useHead({ title: 'Blog - Danini' })
+useHead({ title: 'Blog - danini.dev' })
 </script>
 
 <template>
