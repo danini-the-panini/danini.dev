@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+  <g stroke="#000">
+    <path fill="#000" d="M3 2.5A2.5 2.5 0 0 0 .5 5v16c0 1.4 1.1 2.5 2.5 2.5h16a2.5 2.5 0 0 0 2.5-2.5V5A2.5 2.5 0 0 0 19 2.5H3Zm.5 14v-7h15v7h-15Z"/>
+    <path fill="#FDFDA3" d="M5 .5A2.5 2.5 0 0 0 2.5 3v16c0 1.4 1.1 2.5 2.5 2.5h16a2.5 2.5 0 0 0 2.5-2.5V3A2.5 2.5 0 0 0 21 .5H5Zm.5 14v-7h15v7h-15Z"/>
+  </g>
+</svg>

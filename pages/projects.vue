@@ -1,5 +1,5 @@
 <script setup>
-import GithubIcon from '~/assets/github.svg'
+import GithubIcon from '~/assets/github_smol.svg'
 import BookIcon from '~/assets/book.svg'
 import MicrophoneIcon from '~/assets/microphone.svg'
 
@@ -7,65 +7,38 @@ const { projectImage } = useProjectImages()
 </script>
 
 <template>
-  <main>
-    <h1>Projects</h1>
-    <ContentQuery v-slot="{ data }" path="/projects">
-      <ul>
-        <li v-for="project of data" :key="project._path">
-          <h2>{{ project.name }}</h2>
-          <div class="project-tags">
-            <ProjectTag v-for="tag in project.tags" :tag="tag" :key="tag" />
-          </div>
-          <TagsList :tags="project.tools" :link="false" />
-          <img :src="projectImage(project)" />
-          <ContentRenderer :value="project" />
-          <div class="links">
-            <a :href="project.repo" rel="noopener noreferrer" target="_blank" v-if="project.repo">
-              <GithubIcon />
-              <span>Code</span>
-            </a>
-            <NuxtLink :to="`/blog/${project.article}`" v-if="project.article">
-              <BookIcon />
-              <span>Post</span>
-            </NuxtLink>
-            <NuxtLink :to="`/talks/${project.talk}`" v-if="project.talk">
-              <MicrophoneIcon />
-              <span>Talk</span>
-            </NuxtLink>
-          </div>
-        </li>
-      </ul>
-    </ContentQuery>
-  </main>
+  <ContentQuery v-slot="{ data }" path="/projects">
+    <GridLayout title="Projects" class="layout">
+      <li v-for="project of data" :key="project._path">
+        <h2>{{ project.name }}</h2>
+        <div class="project-tags">
+          <ProjectTag v-for="tag in project.tags" :tag="tag" :key="tag" />
+        </div>
+        <TagsList :tags="project.tools" :link="false" />
+        <img :src="projectImage(project)" />
+        <ContentRenderer :value="project" />
+        <div class="links">
+          <a :href="project.repo" rel="noopener noreferrer" target="_blank" v-if="project.repo">
+            <GithubIcon />
+            <span>Code</span>
+          </a>
+          <NuxtLink :to="`/blog/${project.article}`" v-if="project.article">
+            <BookIcon />
+            <span>Post</span>
+          </NuxtLink>
+          <NuxtLink :to="`/talks/${project.talk}`" v-if="project.talk">
+            <MicrophoneIcon />
+            <span>Talk</span>
+          </NuxtLink>
+        </div>
+      </li>
+    </GridLayout>
+  </ContentQuery>
 </template>
 
 <style scoped lang="scss">
-main {
-  margin: 16px;
-
-  @media (min-width: 40em) {
-    margin: 16px auto;
-    width: 80%;
-  }
-}
-
-h1 {
-  font-family: 'Cherry Bomb One', sans-serif;
-  font-weight: 900;
-  font-size: 3rem; // 48px
-  text-shadow: 0px 4px 0px #000000;
-  -webkit-text-stroke: 1px black;
+.layout:deep(h1) {
   color: #FDFDA3;
-  margin: 0 0 16px 0;
-}
-
-ul {
-  list-style: none;
-  margin: 0 0 64px;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 48px 16px;
 }
 
 li {
@@ -73,14 +46,17 @@ li {
   box-shadow: 4px 6px 0 black;
   background-color: white;
   width: 100%;
+  max-width: 350px;
   padding: 8px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   position: relative;
+  margin: 0 auto;
 
   @media (min-width: 40em) {
     width: 350px;
+    margin: 0;
   }
 }
 

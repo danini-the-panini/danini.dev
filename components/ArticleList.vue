@@ -102,8 +102,11 @@ ul {
 
   .date {
     grid-area: date;
-    font-size: 14px;
     align-self: end;
+    font-size: 16px;
+    color: #818181;
+    font-family: 'Caveat', cursive;
+    transform: rotate(-3deg);
   }
 }
 </style>

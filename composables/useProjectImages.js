@@ -1,5 +1,5 @@
 export default function useProjectImages() {
-  const images = import.meta.globEager('~/assets/projects/*.png');
+  const images = import.meta.glob('~/assets/projects/*.png', { eager: true });
 
   return { projectImage(project) {
     const path = `/assets${project._path}.png`

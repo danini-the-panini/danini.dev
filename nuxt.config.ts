@@ -12,7 +12,8 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Roboto: [400, 700],
-      'Cherry+Bomb+One': true
+      'Cherry+Bomb+One': true,
+      Caveat: true
     }
   },
   content: {

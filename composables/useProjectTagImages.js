@@ -1,5 +1,5 @@
 export default function useProjectTagImages() {
-  const images = import.meta.globEager('~/assets/project-tags/*.png');
+  const images = import.meta.glob('~/assets/project-tags/*.png', { eager: true });
 
   return { projectTagImage(tag) {
     const path = `/assets/project-tags/${tag}.png`
