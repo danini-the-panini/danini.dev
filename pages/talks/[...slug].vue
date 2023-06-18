@@ -10,25 +10,25 @@ const route = useRoute()
 <template>
   <ArticleLayout>
     <ContentQuery :path="route.path" v-slot="{ data }" find="one">
-        <header>
-          <h1>{{data.title}}</h1>
-          <span class="date">{{formatDate(data.date)}}</span>
-        </header>
-        <ContentDoc class="content-doc" />
-        <a class="repo" :href="data.repo" rel="noopener noreferrer" target="_blank" v-if="data.repo">
-          <GithubIcon />
-          <span>Code</span>
-          <ManiculeIcon class="manicule" />
-        </a>
-        <template v-if="data.slides">
-          <h3><SlidesIcon />Slides</h3>
-          <GoogleSlides :slides="data.slides" class="slides" :ratio="data.deckRatio" />
-        </template>
-        <template v-if="data.video">
-          <h3><YoutubeIcon />Video</h3>
-          <YoutubeEmbed :video="data.video" class="video" />
-        </template>
-      </ContentQuery>
+      <header>
+        <h1>{{data.title}}</h1>
+        <span class="date">{{formatDate(data.date)}}</span>
+      </header>
+      <ContentDoc class="content-doc" />
+      <a class="repo" :href="data.repo" rel="noopener noreferrer" target="_blank" v-if="data.repo">
+        <GithubIcon />
+        <span>Code</span>
+        <ManiculeIcon class="manicule" />
+      </a>
+      <template v-if="data.slides">
+        <h3><SlidesIcon />Slides</h3>
+        <GoogleSlides :slides="data.slides" class="slides" :ratio="data.deckRatio" />
+      </template>
+      <template v-if="data.video">
+        <h3><YoutubeIcon />Video</h3>
+        <YoutubeEmbed :video="data.video" class="video" />
+      </template>
+    </ContentQuery>
   </ArticleLayout>
 </template>
 

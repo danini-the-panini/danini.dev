@@ -4,6 +4,8 @@ import BookIcon from '~/assets/book.svg'
 import MicrophoneIcon from '~/assets/microphone.svg'
 
 const { projectImage } = useProjectImages()
+
+useHead({ title: 'Projects - Danini' })
 </script>
 
 <template>

@@ -4,6 +4,8 @@ import YoutubeIcon from '~/assets/youtube.svg'
 import SlidesIcon from '~/assets/slides.svg'
 
 const { talkImage } = useTalkImages()
+
+useHead({ title: 'Talks - Danini' })
 </script>
 
 <template>

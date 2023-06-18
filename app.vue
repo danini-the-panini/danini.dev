@@ -6,9 +6,21 @@ import MastoIcon from "~/assets/masto.svg"
 import GithubIcon from "~/assets/github.svg"
 import BackgroundBg from "~/assets/background-bg.svg"
 import BackgroundFg from "~/assets/background-fg.svg"
+
+useHead({
+  title: 'Danini'
+})
 </script>
 
 <template>
+  <Head>
+    <link rel="icon" href="/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#55ECC9">
+  </Head>
+
   <header>
     <div class="header-content">
       <div class="nav-bg"></div>
