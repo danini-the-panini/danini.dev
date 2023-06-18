@@ -9,7 +9,7 @@ defineOptions({
 
 <template>
   <div class="container w-full h-full flex items-center justify-center">
-    <img class="bg" src="/assets/og-image-bg.png" width="1200" height="630" />
+    <img class="bg" src="/images/og-image-bg.png" width="1200" height="630" />
     <img :class="{ image: true, shadow }" :src="image" width="900" height="500" />
   </div>
 </template>
