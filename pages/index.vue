@@ -129,24 +129,6 @@ dt {
   font-weight: 700;
 }
 
-@keyframes icon-jiggle {
-  0% {
-    transform: rotate(0);
-  }
-
-  33% {
-    transform: rotate(-10deg);
-  }
-
-  66% {
-    transform: rotate(10deg);
-  }
-
-  100% {
-    transform: rotate(0);
-  }
-}
-
 .nav-links {
   display: flex;
   flex-direction: column;

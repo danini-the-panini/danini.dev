@@ -70,16 +70,21 @@ h1 {
       transition: transition(transform), transition(text-shadow);
     }
 
-    &:hover {
-      span {
-        transform: translateY(-4px);
-        text-shadow: 0px 8px 0px #000000;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        span {
+          transform: translateY(-4px);
+          text-shadow: 0px 8px 0px #000000;
+        }
+        .icon {
+          animation: icon-jiggle 200ms 1;
+        }
       }
     }
   }
 
   .icon {
-    transform: translateY(8px);
+    margin-bottom: -8px;
 
     &:deep(g.thing) {
       filter: drop-shadow(-3px 2px 0px rgba(0, 0, 0, 0.25));
@@ -96,6 +101,29 @@ h1 {
 
 h2 {
   margin: 0;
+
+  a {
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        text-decoration-color: #FF4FAA;
+
+        &:before {
+          content: '🖙';
+          transform: translateX(-30px);
+          text-decoration: none;
+          position: absolute;
+          top: 0;
+          color: black;
+          font-weight: normal;
+          animation: manicule-hover $manicule-duration infinite;
+        }
+      }
+    }
+  }
 }
 
 ul {

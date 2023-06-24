@@ -38,9 +38,9 @@ defineOgImageStatic({
   <header>
     <nav>
       <div class="links nav-links">
-        <NuxtLink to="/blog"><BookIcon /></NuxtLink>
-        <NuxtLink to="/projects"><HammerIcon /></NuxtLink>
-        <NuxtLink to="/talks"><MicrophoneIcon /></NuxtLink>
+        <NuxtLink to="/blog"><BookIcon class="shadow"/><BookIcon class="actual"/></NuxtLink>
+        <NuxtLink to="/projects"><HammerIcon class="shadow"/><HammerIcon class="actual"/></NuxtLink>
+        <NuxtLink to="/talks"><MicrophoneIcon class="shadow"/><MicrophoneIcon class="actual"/></NuxtLink>
       </div>
 
       <div class="logo">
@@ -67,6 +67,53 @@ defineOgImageStatic({
 </template>
 
 <style lang="scss">
+
+@keyframes manicule-hover {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: -5px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes manicule-hover-inverted {
+  0% {
+    right: 0;
+  }
+
+  50% {
+    right: -5px;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes icon-jiggle {
+  0% {
+    transform: rotate(0);
+  }
+
+  33% {
+    transform: rotate(-10deg);
+  }
+
+  66% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
 @media (prefers-reduced-motion) {
   *, *::before, *::after {
     transition: none!important;
@@ -129,8 +176,6 @@ img[data-error="1"] {
 </style>
 
 <style scoped lang="scss">
-
-
 header {
   height: 54px;
   width: 100%;
@@ -212,33 +257,28 @@ header {
   position: absolute;
   left: 8px;
   top: 8px;
+  z-index: 1;
 
-  svg.book {
-    filter: drop-shadow(-2px 2px 0px rgba(0, 0, 0, 0.25));
-  }
+  svg.shadow {
+    position: absolute;
+    opacity: 0.25;
 
-  svg.hammer {
-    filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.25));
-  }
-
-  svg.microphone {
-    filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.25));
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    a:hover {
-      svg.book {
-        filter: drop-shadow(-2px 6px 0px rgba(0, 0, 0, 0.25));
-      }
-
-      svg.hammer {
-        filter: drop-shadow(0px 7px 0px rgba(0, 0, 0, 0.25));
-      }
-
-      svg.microphone {
-        filter: drop-shadow(1px 6px 0px rgba(0, 0, 0, 0.25));
-      }
+    :deep(*) {
+      stroke: black;
+      fill: black;
     }
+  }
+
+  svg.book.shadow {
+    transform: translate3d(-2px, 2px, 0);
+  }
+
+  svg.hammer.shadow {
+    transform: translate3d(0, 3px, 0);
+  }
+
+  svg.microphone.shadow {
+    transform: translate3d(1px, 2px, 0);
   }
 }
 
@@ -247,9 +287,9 @@ body.blog {
     pointer-events: none;
   }
 
-  svg.book {
+  svg.book.actual {
     transform: translateY(-48px) !important;
-    filter: drop-shadow(-2px 50px 0px rgba(0, 0, 0, 0.25)) !important;
+    // filter: drop-shadow(-2px 50px 0px rgba(0, 0, 0, 0.25)) !important;
   }
 }
 
@@ -257,9 +297,9 @@ body.projects {
   a[href="/projects"] {
     pointer-events: none;
   }
-  svg.hammer {
+  svg.hammer.actual {
     transform: translateY(-48px) !important;
-    filter: drop-shadow(0px 51px 0px rgba(0, 0, 0, 0.25)) !important;
+    // filter: drop-shadow(0px 51px 0px rgba(0, 0, 0, 0.25)) !important;
   }
 }
 
@@ -267,9 +307,9 @@ body.talks {
   a[href="/talks"] {
     pointer-events: none;
   }
-  svg.microphone {
+  svg.microphone.actual {
     transform: translateY(-48px) !important;
-    filter: drop-shadow(1px 50px 0px rgba(0, 0, 0, 0.25)) !important;
+    // filter: drop-shadow(1px 50px 0px rgba(0, 0, 0, 0.25)) !important;
   }
 }
 
@@ -282,14 +322,14 @@ body.talks {
 .links a {
   display: block;
 
-  svg {
-    transition: transition(transform), transition(filter);
+  svg:not(.shadow) {
+    transition: transition(transform);
     transform: translate3d(0, 0, 0);
   }
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      svg {
+      svg:not(.shadow) {
         transform: translate3d(0, -4px, 0);
       }
     }

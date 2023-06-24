@@ -16,31 +16,3 @@ $manicule-duration: 600ms;
   background-position: center;
   background-repeat: no-repeat;
 }
-
-@keyframes manicule-hover {
-  0% {
-    left: 0;
-  }
-
-  50% {
-    left: -5px;
-  }
-
-  100% {
-    left: 0;
-  }
-}
-
-@keyframes manicule-hover-inverted {
-  0% {
-    right: 0;
-  }
-
-  50% {
-    right: -5px;
-  }
-
-  100% {
-    right: 0;
-  }
-}
