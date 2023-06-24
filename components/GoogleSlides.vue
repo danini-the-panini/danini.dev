@@ -1,37 +1,56 @@
 <script setup>
-const props = defineProps(['slides', 'ratio'])
+const props = defineProps({
+  slides: String,
+  ratio: {
+    type: Number,
+    default: 1.77777777777778
+  }
+})
 
 const iframe = ref(null)
 
 const embedSrc = computed(() => `https://docs.google.com/presentation/d/e/${props.slides}/embed?start=false&loop=false&delayms=3000`)
 
-onMounted(() => {
-  window.addEventListener('resize', onResize, { passive: true });
-  onResize()
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', onResize);
-})
-
-function onResize() {
+onMountResizeEnter(() => {
   if (!iframe.value) return
 
-  const ratio = (props.ratio || 1.77777777777778);
-  iframe.value.style.height = `${iframe.value.clientWidth/ratio + 36}px`;
-}
+  iframe.value.style.height = `${iframe.value.clientWidth/props.ratio + 36}px`;
+})
 </script>
 
 <template>
-  <iframe
-    ref="iframe"
-    :src="embedSrc"
-    frameborder="0"
-    width="960"
-    height="569"
-    allowfullscreen="true"
-    mozallowfullscreen="true"
-    webkitallowfullscreen="true"
-  >
-  </iframe>
+  <div class="container">
+    <div class="bogus"></div>
+    <iframe
+      ref="iframe"
+      :src="embedSrc"
+      frameborder="0"
+      width="960"
+      height="569"
+      allowfullscreen="true"
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true"
+    >
+    </iframe>
+  </div>
 </template>
+
+<style scoped lang="scss">
+.container {
+  position: relative;
+}
+
+.bogus {
+  box-sizing: content-box;
+  aspect-ratio: v-bind(ratio);
+  border-bottom: 36px solid #E5E7E8;
+}
+
+iframe {
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>

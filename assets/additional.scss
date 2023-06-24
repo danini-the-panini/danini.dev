@@ -1,0 +1,11 @@
+$default-easing:   ease-in-out;
+$default-duration: 200ms;
+$page-duration:    300ms;
+
+@function transition($name, $duration: $default-duration, $easing: $default-easing) {
+  @return $name $duration $easing;
+}
+
+@function transition-page($name, $duration: $page-duration, $easing: $default-easing) {
+  @return $name $duration $easing;
+}

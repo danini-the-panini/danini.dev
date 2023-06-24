@@ -54,7 +54,7 @@ h1 {
     color: #EB9DFF;
     text-decoration: none;
     transform: translateY(0);
-    transition: transform 200ms ease-in-out, text-shadow 200ms ease-in-out;
+    transition: transition(transform), transition(text-shadow);
 
     &:hover {
       transform: translateY(-4px);

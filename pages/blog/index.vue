@@ -2,7 +2,10 @@
 const query = queryContent('blog')
 
 useHead({
-  title: 'Blog'
+  title: 'Blog',
+  bodyAttrs: {
+    class: 'blog'
+  }
 })
 useSeoMeta({
   description: 'Where I occasionally share some thoughts on the interwebs'

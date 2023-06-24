@@ -1,6 +1,11 @@
 <script setup>
 const route = useRoute()
 
+useHead({
+  bodyAttrs: {
+    class: 'blog-post'
+  }
+})
 defineOgImageStatic({
   component: 'DaniniOgImage',
   text: 'blog'
@@ -114,7 +119,7 @@ header {
     height: auto;
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
     border: 1px solid black;
-    transition: box-shadow 200ms ease-in-out;
+    transition: transition(box-shadow);
   }
 
   a:hover img {

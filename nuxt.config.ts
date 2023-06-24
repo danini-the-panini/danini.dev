@@ -13,7 +13,14 @@ export default defineNuxtConfig({
   ],
 
   vite: {
-    plugins: [svgLoader()]
+    plugins: [svgLoader()],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/additional.scss" as *;'
+        }
+      }
+    }
   },
 
   nitro: {
@@ -45,7 +52,8 @@ export default defineNuxtConfig({
         { rel: "apple-touch-icon", sizes: '180x180', href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/manifest.webmanifest" }
       ]
-    }
+    },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
 
   content: {

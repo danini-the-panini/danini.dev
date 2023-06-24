@@ -29,7 +29,7 @@ const routeTo = props.link ? `/blog/tags/${props.tag}` : null
     border: 1px solid #000000;
     box-shadow: -2px 4px 0px #000000;
     transform: translate3d(0, 0, 0);
-    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    transition: transition(transform), transition(box-shadow);
     padding: 0 4px;
   }
 }

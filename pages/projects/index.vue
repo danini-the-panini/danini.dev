@@ -4,7 +4,10 @@ import BookIcon from '~/assets/book.svg'
 import MicrophoneIcon from '~/assets/microphone.svg'
 
 useHead({
-  title: 'Projects'
+  title: 'Projects',
+  bodyAttrs: {
+    class: 'projects'
+  }
 })
 useSeoMeta({
   description: 'Things I have built, hacked, or tinkered with in my lifetime'
@@ -16,8 +19,8 @@ defineOgImageStatic({
 </script>
 
 <template>
-  <ContentQuery v-slot="{ data }" path="/projects">
-    <GridLayout title="Projects" class="layout">
+  <GridLayout title="Projects" class="layout">
+    <ContentQuery v-slot="{ data }" path="/projects">
       <li v-for="project of data" :key="project._path">
         <h2>{{ project.name }}</h2>
         <div class="project-tags">
@@ -41,8 +44,8 @@ defineOgImageStatic({
           </NuxtLink>
         </div>
       </li>
-    </GridLayout>
-  </ContentQuery>
+    </ContentQuery>
+  </GridLayout>
 </template>
 
 <style scoped lang="scss">
@@ -114,7 +117,7 @@ img {
       border: 1px solid #000000;
       box-shadow: -5px 4px 0px #000000;
       padding: 2px 4px;
-      transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+      transition: transition(transform), transition(box-shadow);
     }
 
     &:hover {

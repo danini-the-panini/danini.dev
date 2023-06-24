@@ -6,6 +6,11 @@ const query = queryContent('blog').where({ tags: { $contains: tag } })
 
 useHead({ title: `Posts tagged "${tag}" ` })
 
+useHead({
+  bodyAttrs: {
+    class: 'blog-tag'
+  }
+})
 defineOgImageStatic({
   component: 'TagOgImage',
   tag

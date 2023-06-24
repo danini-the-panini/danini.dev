@@ -5,6 +5,21 @@ import SlidesIcon from '~/assets/slides.svg'
 import ManiculeIcon from "~/assets/manicule.svg"
 
 const route = useRoute()
+const slides = ref(null)
+const video = ref(null)
+
+useHead({
+  bodyAttrs: {
+    class: 'talk'
+  }
+});
+definePageMeta({
+  pageTransition: {
+    onAfterEnter: () => {
+      document.dispatchEvent(new Event('transition:after-enter'))
+    }
+  }
+})
 </script>
 
 <template>
@@ -23,11 +38,11 @@ const route = useRoute()
       </a>
       <template v-if="data.slides">
         <h3><SlidesIcon />Slides</h3>
-        <GoogleSlides :slides="data.slides" class="slides" :ratio="data.deckRatio" />
+        <GoogleSlides :slides="data.slides" class="slides" :ratio="data.deckRatio" ref="slides" />
       </template>
       <template v-if="data.video">
         <h3><YoutubeIcon />Video</h3>
-        <YoutubeEmbed :video="data.video" class="video" />
+        <YoutubeEmbed :video="data.video" class="video" ref="video" />
       </template>
     </ContentQuery>
   </ArticleLayout>
@@ -67,7 +82,7 @@ h1 {
     border: 1px solid #000000;
     box-shadow: -5px 4px 0px #000000;
     padding: 2px 4px;
-    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    transition: transition(transform), transition(box-shadow);
   }
 
   &:hover {

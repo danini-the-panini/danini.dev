@@ -12,6 +12,11 @@ useHead({
     class: 'home'
   }
 })
+definePageMeta({
+  pageTransition: {
+    name: 'home'
+  }
+})
 </script>
 
 <template>
@@ -68,7 +73,8 @@ useHead({
 main {
   position: fixed;
   width: 100%;
-  top: 160px;
+  top: 0;
+  padding-top: 160px;
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -91,6 +97,7 @@ dl {
   position: relative;
   align-self: center;
   margin: 0;
+  transform: translateY(0)
 }
 
 dl::before {
@@ -143,7 +150,7 @@ dt {
       text-shadow: 0px 4px 0px #000000;
       -webkit-text-stroke: 1px black;
 
-      transition: transform 200ms ease-in-out, text-shadow 200ms ease-in-out;
+      transition: transition(transform), transition(text-shadow);
     }
 
     .manicule {
@@ -158,29 +165,8 @@ dt {
     }
 
     @media (hover: hover) and (pointer: fine) {
-      // .manicule {
-      //   &:not(.inverted) {
-      //     left: -100vw;
-      //     transition: left 200ms ease-in-out;
-      //   }
-
-      //   &.inverted {
-      //     right: -100vw;
-      //     transition: right 200ms ease-in-out;
-      //   }
-      // }
 
       &:hover {
-        // .manicule {
-        //   &:not(.inverted) {
-        //     left: 0;
-        //   }
-
-        //   &.inverted {
-        //     right: 0;
-        //   }
-        // }
-
         span {
           transform: translateY(-4px);
           text-shadow: 0px 8px 0px #000000;
@@ -251,7 +237,7 @@ dt {
       border: 1px solid #000000;
       box-shadow: -5px 4px 0px #000000;
       padding: 2px 4px;
-      transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+      transition: transition(transform), transition(box-shadow);
     }
 
     &:hover {
@@ -259,6 +245,42 @@ dt {
         transform: translate3d(4px, -4px, 0px);
         box-shadow: -9px 8px 0px #000000;
       }
+    }
+  }
+}
+
+.home-enter-active,
+.home-leave-active {
+  transition: transition-page(opacity);
+  overflow: hidden;
+
+  dl, .nav-links, .social-links {
+    transition: transition-page(transform);
+  }
+}
+
+.home-enter-from,
+.home-leave-to {
+  opacity: 0.999;
+
+  dl {
+    transform: translateX(-100vw);
+
+    @media (min-width: 40em) {
+      transform: rotate(-270deg) scale3d(0.01, 0.01, 1);
+    }
+  }
+
+
+  .nav-links {
+    transform: translateX(100vw);
+  }
+
+  .social-links {
+    transform: translateY(200px);
+
+    @media (min-width: 40em) {
+      transform: translate3d(-150%, 150%, 0);
     }
   }
 }

@@ -4,7 +4,10 @@ import YoutubeIcon from '~/assets/youtube.svg'
 import SlidesIcon from '~/assets/slides.svg'
 
 useHead({
-  title: 'Talks'
+  title: 'Talks',
+  bodyAttrs: {
+    class: 'talks'
+  }
 });
 useSeoMeta({
   description: 'Various presentations that I have given at conferences and meetups'
@@ -16,8 +19,8 @@ defineOgImageStatic({
 </script>
 
 <template>
-  <ContentQuery v-slot="{ data }" path="/talks" :sort="{ date: -1 }">
-    <GridLayout class="layout" title="Talks">
+  <GridLayout class="layout" title="Talks">
+    <ContentQuery v-slot="{ data }" path="/talks" :sort="{ date: -1 }">
       <li v-for="talk of data" :key="talk._path">
         <NuxtLink :to="talk._path">
           <header>
@@ -33,8 +36,8 @@ defineOgImageStatic({
           <div class="date">{{ formatDate(talk.date) }}</div>
         </NuxtLink>
       </li>
-    </GridLayout>
-  </ContentQuery>
+    </ContentQuery>
+  </GridLayout>
 </template>
 
 <style scoped lang="scss">
@@ -59,7 +62,7 @@ li {
     height: 100%;
     padding: 16px;
     transform: translate3d(0, 0, 0);
-    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    transition: transition(transform), transition(box-shadow);
 
     &:hover {
       transform: translate3d(-4px, -4px, 0);

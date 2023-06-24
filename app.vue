@@ -21,57 +21,62 @@ defineOgImageStatic({
     <SeoKit />
   </Head>
 
-  <header>
-    <div class="header-content">
-      <div class="nav-bg"></div>
-
-      <div class="bar3"></div>
-      <div class="bar2"></div>
-      <div class="bar1"></div>
-
-      <nav>
-        <div class="links nav-links">
-          <NuxtLink to="/blog"><BookIcon /></NuxtLink>
-          <NuxtLink to="/projects"><HammerIcon /></NuxtLink>
-          <NuxtLink to="/talks"><MicrophoneIcon /></NuxtLink>
-        </div>
-
-        <div class="logo">
-          <NuxtLink to="/">
-            <span>D</span>
-            <span>a</span>
-            <span>n</span>
-            <span>i</span>
-            <span>n</span>
-            <span>i</span>
-          </NuxtLink>
-        </div>
-
-        <div class="links social-links">
-          <a href="https://toot.cat/@danini" target="_blank" rel="me noreferrer noopener"><MastoIcon /></a>
-          <a href="https://github.com/danini-the-panini" target="_blank" rel="me noreferrer noopener"><GithubIcon /></a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
   <div class="background">
     <div class="white"></div>
     <BackgroundBg />
     <div class="zigzags"></div>
     <BackgroundFg />
   </div>
-
   <div class="spots"></div>
+  <div class="nav-bg"></div>
+  <div class="bars">
+    <div class="bar3"></div>
+    <div class="bar2"></div>
+    <div class="bar1"></div>
+  </div>
 
-  <div>
+  <header>
+    <nav>
+      <div class="links nav-links">
+        <NuxtLink to="/blog"><BookIcon /></NuxtLink>
+        <NuxtLink to="/projects"><HammerIcon /></NuxtLink>
+        <NuxtLink to="/talks"><MicrophoneIcon /></NuxtLink>
+      </div>
+
+      <div class="logo">
+        <NuxtLink to="/">
+          <span>D</span>
+          <span>a</span>
+          <span>n</span>
+          <span>i</span>
+          <span>n</span>
+          <span>i</span>
+        </NuxtLink>
+      </div>
+
+      <div class="links social-links">
+        <a href="https://toot.cat/@danini" target="_blank" rel="me noreferrer noopener"><MastoIcon /></a>
+        <a href="https://github.com/danini-the-panini" target="_blank" rel="me noreferrer noopener"><GithubIcon /></a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="app">
     <NuxtPage />
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@media (prefers-reduced-motion) {
+  *, *::before, *::after {
+    transition: none!important;
+    animation: none!important;
+  }
+}
+
 html {
   background-color: #55ECC9;
+  min-height: 100%;
 }
 
 html, body {
@@ -80,43 +85,72 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#__nuxt {
+  flex-grow: 1;
 }
 
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
+.page-enter-active,
+.page-leave-active {
+  overflow: hidden;
+  transition: transition-page(transform);
+}
+
+.page-enter-from {
+  transform: translateX(100vw);
+}
+
+.page-leave-to {
+  transform: translateX(-100vw);
+}
 </style>
 
 <style scoped lang="scss">
 
-@function transition($name, $duration: 200ms, $easing: ease-in-out) {
-  @return $name $duration $easing;
-}
 
 header {
-  height: 48px;
+  height: 54px;
   width: 100%;
+  transition: transition-page(height);
+  overflow: hidden;
 }
-
-.header-content {
-  position: relative;
-  padding: 0 8px;
-}
-
-$header-anim-duration: 300ms;
 
 .logo {
-  transition: transition(transform, $header-anim-duration),
-    transition(margin, $header-anim-duration),
-    transition(padding, $header-anim-duration),
-    transition(text-shadow, $header-anim-duration),
-    transition(font-size, $header-anim-duration);
+  transition: transition-page(transform),
+    transition-page(margin),
+    transition-page(padding),
+    transition-page(text-shadow),
+    transition-page(font-size);
 }
 
 .bar1, .bar2, .bar3 {
   &, &:before, &:after {
-    transition: transition(all, $header-anim-duration);
+    transition: transition-page(all);
   }
+}
+
+.bars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .bar1, .bar2, .bar3 {
@@ -193,7 +227,7 @@ svg.microphone {
   display: block;
 
   svg {
-    transition: transform 200ms ease-in-out;
+    transition: transition(transform);
     transform: translate3d(0, 0, 0);
   }
 
@@ -277,14 +311,6 @@ body:not(.home) {
 }
 
 body.home {
-  .header-content {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
   .bar1, .bar2, .bar3 {
     height: 24px;
     width: calc(100vw - 64px);
@@ -324,6 +350,10 @@ body.home {
 
   .nav-links, .social-links {
     top: -48px;
+  }
+
+  header {
+    height: 140px;
   }
 }
 
@@ -366,12 +396,29 @@ body.home {
   height: 400px;
   right: -200px;
   top: -100px;
-  z-index: -1;
+  z-index: -2;
   
   background-image: url(~/assets/spots.png);
   background-size: 13px 26px;
   transform: rotate(-39.41deg);
   background-position-y: 6px;
+}
+
+.nav-bg {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20vh - 25px);
+  width: 440px;
+  height: 210px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-shadow: 9px 10px 0px #000000;
+  z-index: -1;
+  opacity: 0;
+  display: none;
+  transform: translateX(100vw) rotate(-4.23deg);
+  transition: transition-page(transform),
+              transition-page(opacity);
 }
 
 @media (min-width: 40em) {
@@ -383,23 +430,24 @@ body.home {
     display: block;
   }
 
+  .nav-bg {
+    display: block;
+  }
+
   body.home {
+    .bars {
+      position: fixed;
+    }
+
     .bar1, .bar2, .bar3 {
       height: 24px;
       width: calc(100vw - 150px);
     }
 
     .nav-bg {
-      position: fixed;
-      right: 20px;
-      bottom: calc(20vh - 25px);
-      width: 440px;
-      height: 210px;
-      background: #FFFFFF;
-      border: 1px solid #000000;
-      box-shadow: 9px 10px 0px #000000;
-      transform: rotate(-4.23deg) translate3d(0, 0, 0);
-      z-index: -1;
+      opacity: 1;
+      transform: rotate(-4.23deg) translateY(0);
+      transition-delay: $page-duration;
     }
 
     .bar1 {
