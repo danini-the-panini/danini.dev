@@ -129,6 +129,24 @@ dt {
   font-weight: 700;
 }
 
+@keyframes icon-jiggle {
+  0% {
+    transform: rotate(0);
+  }
+
+  33% {
+    transform: rotate(-10deg);
+  }
+
+  66% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -165,11 +183,22 @@ dt {
     }
 
     @media (hover: hover) and (pointer: fine) {
-
       &:hover {
         span {
           transform: translateY(-4px);
           text-shadow: 0px 8px 0px #000000;
+        }
+
+        .manicule {
+          animation: manicule-hover $manicule-duration infinite;
+
+          &.inverted {
+            animation-name: manicule-hover-inverted;
+          }
+        }
+
+        .icon {
+          animation: icon-jiggle 200ms 1;
         }
       }
     }
@@ -183,7 +212,7 @@ dt {
     }
 
     .icon {
-      transform: translateY(8px);
+      margin-bottom: -8px;
 
       &:deep(g.thing) {
         filter: drop-shadow(-3px 2px 0px rgba(0, 0, 0, 0.25));

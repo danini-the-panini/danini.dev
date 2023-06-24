@@ -1,9 +1,11 @@
 <script setup>
+import BookIcon from "~/assets/book.svg"
+
 const route = useRoute()
 
 useHead({
   bodyAttrs: {
-    class: 'blog-post'
+    class: 'blog post'
   }
 })
 defineOgImageStatic({
@@ -17,6 +19,9 @@ defineOgImageStatic({
       <header>
         <ContentQuery :path="route.path" v-slot="{ data }" find="one">
           <OgImageStatic component="PostOgImage" :title="data.title" :date="data.publishedAt"/>
+          <NuxtLink to="/blog" class="back">
+            <BookIcon />
+          </NuxtLink>
           <TagsList :tags="data.tags" />
           <span class="date">{{formatDate(data.publishedAt)}}</span>
         </ContentQuery>
@@ -27,19 +32,52 @@ defineOgImageStatic({
 
 <style scoped lang="scss">
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-areas: 'back date' 'tags tags';
+  grid-template-columns: 1fr auto;
   margin-bottom: 16px;
-}
+  gap: 16px;
 
-.date {
-  color: #818181;
-  font-family: 'Caveat', cursive;
-  transform: rotate(-5deg);
-  margin-right: 8px;
-  position: relative;
-  top: 4px;
+  @media (min-width: 40em) {
+    grid-template-areas: 'back tags date';
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .back {
+    grid-area: back;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    svg {
+      position: relative;
+      top: -4px;
+      filter: drop-shadow(-2px 2px 0px rgba(0, 0, 0, 0.25));
+      transition: transition(transform), transition(filter);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        svg {
+          transform: translateY(-4px);
+          filter: drop-shadow(-2px 6px 0px rgba(0, 0, 0, 0.25));
+        }
+      }
+    }
+  }
+
+  .tags {
+    grid-area: tags;
+  }
+
+  .date {
+    grid-area: date;
+    white-space: nowrap;
+    color: #818181;
+    font-family: 'Caveat', cursive;
+    transform: rotate(-5deg);
+    margin-right: 8px;
+  }
 }
 </style>
 

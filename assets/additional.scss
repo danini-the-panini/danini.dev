@@ -1,6 +1,7 @@
-$default-easing:   ease-in-out;
-$default-duration: 200ms;
-$page-duration:    300ms;
+$default-easing:    ease-in-out;
+$default-duration:  200ms;
+$page-duration:     300ms;
+$manicule-duration: 600ms;
 
 @function transition($name, $duration: $default-duration, $easing: $default-easing) {
   @return $name $duration $easing;
@@ -14,4 +15,32 @@ $page-duration:    300ms;
   background-image: url(~/assets/hourglass.gif);
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@keyframes manicule-hover {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: -5px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes manicule-hover-inverted {
+  0% {
+    right: 0;
+  }
+
+  50% {
+    right: -5px;
+  }
+
+  100% {
+    right: 0;
+  }
 }

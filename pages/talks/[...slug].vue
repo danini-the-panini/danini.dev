@@ -1,4 +1,5 @@
 <script setup>
+import MicrophoneIcon from '~/assets/microphone.svg'
 import GithubIcon from '~/assets/github.svg'
 import YoutubeIcon from '~/assets/youtube.svg'
 import SlidesIcon from '~/assets/slides.svg'
@@ -10,7 +11,7 @@ const video = ref(null)
 
 useHead({
   bodyAttrs: {
-    class: 'talk'
+    class: 'talks talk'
   }
 });
 definePageMeta({
@@ -27,6 +28,7 @@ definePageMeta({
     <ContentQuery :path="route.path" v-slot="{ data }" find="one">
       <OgImageStatic component="TalkOgImage" :image="`/images${route.path}.png`" />
       <header>
+        <NuxtLink to="/talks"><MicrophoneIcon /></NuxtLink>
         <h1>{{data.title}}</h1>
         <span class="date">{{formatDate(data.date)}}</span>
       </header>
@@ -53,6 +55,28 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+
+  h1 {
+    margin-right: auto;
+  }
+
+  a {
+    svg {
+      transition: transition(transform), transition(filter);
+      transform: translateY(0);
+      filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.25));
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      svg {
+        transform: translateY(-4px);
+        filter: drop-shadow(1px 6px 0px rgba(0, 0, 0, 0.25));
+      }
+    }
+  }
 }
 
 h1 {
@@ -64,6 +88,7 @@ h1 {
   color: #818181;
   font-family: 'Caveat', cursive;
   transform: rotate(-3deg);
+  align-self: flex-start;
 }
 
 .repo {
@@ -85,16 +110,23 @@ h1 {
     transition: transition(transform), transition(box-shadow);
   }
 
-  &:hover {
-    span {
-      transform: translate3d(4px, -4px, 0px);
-      box-shadow: -9px 8px 0px #000000;
-    }
-  }
-
   .manicule {
     transform: scaleX(-1);
     filter: drop-shadow(-2px 4px 0px rgba(0, 0, 0, 0.25));
+    position: relative;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      span {
+        transform: translate3d(4px, -4px, 0px);
+        box-shadow: -9px 8px 0px #000000;
+      }
+
+      .manicule {
+        animation: manicule-hover-inverted $manicule-duration infinite;
+      }
+    }
   }
 }
 

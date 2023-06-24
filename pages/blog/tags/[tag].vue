@@ -8,7 +8,7 @@ useHead({ title: `Posts tagged "${tag}" ` })
 
 useHead({
   bodyAttrs: {
-    class: 'blog-tag'
+    class: 'blog tag'
   }
 })
 defineOgImageStatic({

@@ -200,12 +200,77 @@ header {
   box-shadow: 0px 6px 0px #000000;
 }
 
-.nav-links, .social-links {
+.links {
   display: flex;
   align-items: center;
   gap: 8px;
 
-  transition: top 500ms ease-in-out;
+  transition: transition(top);
+}
+
+.nav-links {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+
+  svg.book {
+    filter: drop-shadow(-2px 2px 0px rgba(0, 0, 0, 0.25));
+  }
+
+  svg.hammer {
+    filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.25));
+  }
+
+  svg.microphone {
+    filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.25));
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a:hover {
+      svg.book {
+        filter: drop-shadow(-2px 6px 0px rgba(0, 0, 0, 0.25));
+      }
+
+      svg.hammer {
+        filter: drop-shadow(0px 7px 0px rgba(0, 0, 0, 0.25));
+      }
+
+      svg.microphone {
+        filter: drop-shadow(1px 6px 0px rgba(0, 0, 0, 0.25));
+      }
+    }
+  }
+}
+
+body.blog {
+  a[href="/blog"] {
+    pointer-events: none;
+  }
+
+  svg.book {
+    transform: translateY(-48px) !important;
+    filter: drop-shadow(-2px 50px 0px rgba(0, 0, 0, 0.25)) !important;
+  }
+}
+
+body.projects {
+  a[href="/projects"] {
+    pointer-events: none;
+  }
+  svg.hammer {
+    transform: translateY(-48px) !important;
+    filter: drop-shadow(0px 51px 0px rgba(0, 0, 0, 0.25)) !important;
+  }
+}
+
+body.talks {
+  a[href="/talks"] {
+    pointer-events: none;
+  }
+  svg.microphone {
+    transform: translateY(-48px) !important;
+    filter: drop-shadow(1px 50px 0px rgba(0, 0, 0, 0.25)) !important;
+  }
 }
 
 .social-links {
@@ -214,29 +279,11 @@ header {
   top: 3px;
 }
 
-.nav-links {
-  position: absolute;
-  left: 8px;
-  top: 8px;
-}
-
-svg.book {
-  filter: drop-shadow(-2px 2px 0px rgba(0, 0, 0, 0.25));
-}
-
-svg.hammer {
-  filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.25));
-}
-
-svg.microphone {
-  filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.25));
-}
-
 .links a {
   display: block;
 
   svg {
-    transition: transition(transform);
+    transition: transition(transform), transition(filter);
     transform: translate3d(0, 0, 0);
   }
 

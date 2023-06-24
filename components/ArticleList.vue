@@ -1,4 +1,6 @@
 <script setup>
+import BookIcon from "~/assets/book2.svg"
+
 defineProps(['query', 'tag'])
 
 function compareFn(a, b) {
@@ -14,7 +16,13 @@ function compareFn(a, b) {
 
 <template>
   <main>
-    <h1><NuxtLink class="link" to="/blog">Blog</NuxtLink><Tag :tag="tag" v-if="tag" /></h1>
+    <h1>
+      <NuxtLink class="link" to="/blog">
+        <BookIcon class="icon" />
+        <span>Blog</span>
+      </NuxtLink>
+      <Tag :tag="tag" v-if="tag" />
+    </h1>
 
     <nav>
       <ContentNavigation v-slot="{ navigation }" :query="query">
@@ -49,16 +57,32 @@ h1 {
     font-family: 'Cherry Bomb One', sans-serif;
     font-weight: 900;
     font-size: 3rem; // 48px
-    text-shadow: 0px 4px 0px #000000;
-    -webkit-text-stroke: 1px black;
-    color: #EB9DFF;
     text-decoration: none;
-    transform: translateY(0);
-    transition: transition(transform), transition(text-shadow);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    span {
+      text-shadow: 0px 4px 0px #000000;
+      -webkit-text-stroke: 1px black;
+      color: #EB9DFF;
+      transform: translateY(0);
+      transition: transition(transform), transition(text-shadow);
+    }
 
     &:hover {
-      transform: translateY(-4px);
-      text-shadow: 0px 8px 0px #000000;
+      span {
+        transform: translateY(-4px);
+        text-shadow: 0px 8px 0px #000000;
+      }
+    }
+  }
+
+  .icon {
+    transform: translateY(8px);
+
+    &:deep(g.thing) {
+      filter: drop-shadow(-3px 2px 0px rgba(0, 0, 0, 0.25));
     }
   }
 

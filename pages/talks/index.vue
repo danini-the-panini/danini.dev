@@ -1,4 +1,5 @@
 <script setup>
+import MicrophoneIcon from '~/assets/microphone2.svg'
 import GithubIcon from '~/assets/github_smol.svg'
 import YoutubeIcon from '~/assets/youtube.svg'
 import SlidesIcon from '~/assets/slides.svg'
@@ -19,7 +20,11 @@ defineOgImageStatic({
 </script>
 
 <template>
-  <GridLayout class="layout" title="Talks">
+  <GridLayout class="layout">
+    <template #title>
+      <MicrophoneIcon class="icon" />
+      <span class="title">Talks</span>
+    </template>
     <ContentQuery v-slot="{ data }" path="/talks" :sort="{ date: -1 }">
       <li v-for="talk of data" :key="talk._path">
         <NuxtLink :to="talk._path">
@@ -41,8 +46,28 @@ defineOgImageStatic({
 </template>
 
 <style scoped lang="scss">
-.layout:deep(h1) {
+.title {
   color: #3CE4FA;
+}
+
+.icon {
+  &:deep(g.thing) {
+    filter: drop-shadow(3px 2px 0px rgba(0, 0, 0, 0.25));
+  }
+}
+
+@keyframes icon-hop {
+  0% {
+    transform: translateY(0);
+  }
+  
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 li {
@@ -64,9 +89,25 @@ li {
     transform: translate3d(0, 0, 0);
     transition: transition(transform), transition(box-shadow);
 
-    &:hover {
-      transform: translate3d(-4px, -4px, 0);
-      box-shadow: 8px 10px 0 black;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: translate3d(-4px, -4px, 0);
+        box-shadow: 8px 10px 0 black;
+
+        .icons {
+          svg:not(:only-child) {
+            animation: icon-hop 300ms 1;
+
+            &:nth-last-child(2) {
+              animation-delay: 100ms;
+            }
+
+            &:nth-last-child(3) {
+              animation-delay: 200ms;
+            }
+          }
+        }
+      }
     }
   }
 

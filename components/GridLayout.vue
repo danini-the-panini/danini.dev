@@ -1,10 +1,6 @@
-<script setup>
-defineProps(['title'])
-</script>
-
 <template>
   <main>
-    <h1>{{title}}</h1>
+    <h1><slot name="title"></slot></h1>
     <ul>
       <slot></slot>
     </ul>
@@ -28,6 +24,9 @@ h1 {
   text-shadow: 0px 4px 0px #000000;
   -webkit-text-stroke: 1px black;
   margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 ul {

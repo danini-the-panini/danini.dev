@@ -1,4 +1,5 @@
 <script setup>
+import HammerIcon from '~/assets/hammer2.svg'
 import GithubIcon from '~/assets/github_smol.svg'
 import BookIcon from '~/assets/book.svg'
 import MicrophoneIcon from '~/assets/microphone.svg'
@@ -19,7 +20,11 @@ defineOgImageStatic({
 </script>
 
 <template>
-  <GridLayout title="Projects" class="layout">
+  <GridLayout class="layout">
+    <template #title>
+      <HammerIcon class="icon" />
+      <span class="title">Projects</span>
+    </template>
     <ContentQuery v-slot="{ data }" path="/projects">
       <li v-for="project of data" :key="project._path">
         <h2>{{ project.name }}</h2>
@@ -49,8 +54,14 @@ defineOgImageStatic({
 </template>
 
 <style scoped lang="scss">
-.layout:deep(h1) {
+.title {
   color: #FDFDA3;
+}
+
+.icon {
+  &:deep(g.thing) {
+    filter: drop-shadow(0px 4px 0px rgba(0, 0, 0, 0.25));
+  }
 }
 
 li {
