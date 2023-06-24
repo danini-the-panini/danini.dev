@@ -64,6 +64,8 @@ defineOgImageStatic({
   <div class="app">
     <NuxtPage />
   </div>
+
+  <LoadingIndicator />
 </template>
 
 <style lang="scss">
