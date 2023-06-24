@@ -24,7 +24,7 @@ defineOgImageStatic({
           <ProjectTag v-for="tag in project.tags" :tag="tag" :key="tag" />
         </div>
         <TagsList :tags="project.tools" :link="false" />
-        <NuxtImg format="webp" :src="`/images${project._path}.png`" />
+        <NuxtImg format="webp" :src="`/images${project._path}.png`" width="412" height="226" />
         <ContentRenderer :value="project" />
         <div class="links">
           <a :href="project.repo" rel="noopener noreferrer" target="_blank" v-if="project.repo">

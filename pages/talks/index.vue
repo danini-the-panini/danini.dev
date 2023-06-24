@@ -29,7 +29,7 @@ defineOgImageStatic({
             </div>
           </header>
           <ContentRenderer :value="talk" class="description" />
-          <NuxtImg format="webp" :src="`/images${talk._path}.png`" />
+          <NuxtImg format="webp" :src="`/images${talk._path}.png`" width="900" height="500" />
           <div class="date">{{ formatDate(talk.date) }}</div>
         </NuxtLink>
       </li>
@@ -44,6 +44,8 @@ defineOgImageStatic({
 
 li {
   width: 100%;
+  max-width: 370px;
+  margin: 0 auto;
 
   a {
     text-decoration: none;
@@ -67,6 +69,7 @@ li {
 
   @media (min-width: 40em) {
     width: 370px;
+    margin: 0;
   }
 }
 
