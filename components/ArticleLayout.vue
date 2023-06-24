@@ -13,6 +13,7 @@ main {
   font-size: 1rem;
   text-rendering: optimizeLegibility;
   color: #3b4351;
+  border-bottom: 1px solid black;
   box-shadow: 5px 7px 0px #000000;
 
   @media (min-width: 40em) {
