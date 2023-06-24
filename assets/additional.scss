@@ -9,3 +9,9 @@ $page-duration:    300ms;
 @function transition-page($name, $duration: $page-duration, $easing: $default-easing) {
   @return $name $duration $easing;
 }
+
+@mixin hourglass {
+  background-image: url(~/assets/hourglass.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+}

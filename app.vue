@@ -117,6 +117,15 @@ body {
 .page-leave-to {
   transform: translateX(-100vw);
 }
+
+img[data-nuxt-img] {
+  background-image: url(~/assets/hourglass.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+img[data-error="1"] {
+  background-image: url(~/assets/borkfile.png);
+}
 </style>
 
 <style scoped lang="scss">
@@ -362,7 +371,7 @@ body.home {
   bottom: 0;
   left: 0;
   display: none;
-  z-index: -1;
+  z-index: -2;
 
   svg {
     position: absolute;

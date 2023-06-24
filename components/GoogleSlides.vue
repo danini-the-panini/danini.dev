@@ -41,6 +41,7 @@ onMountResizeEnter(() => {
 }
 
 .bogus {
+  @include hourglass;
   box-sizing: content-box;
   aspect-ratio: v-bind(ratio);
   border-bottom: 36px solid #E5E7E8;

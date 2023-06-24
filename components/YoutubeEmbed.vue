@@ -29,6 +29,7 @@ onMountResizeEnter(() => {
 
 <style scoped lang="scss">
 .container {
+  @include hourglass;
   aspect-ratio: v-bind(ratio);
 }
 

@@ -162,11 +162,16 @@ header {
 
   .columns {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
 
-    @for $i from 1 through 12 {
-      .col-#{$i} {
-        width: math.div($i, 12) * 100%;
+    @media (min-width: 40em) {
+      flex-direction: row;
+      gap: 16px;
+
+      @for $i from 1 through 12 {
+        .col-#{$i} {
+          width: math.div($i, 12) * 100%;
+        }
       }
     }
   }
