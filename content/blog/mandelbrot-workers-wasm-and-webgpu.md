@@ -77,3 +77,8 @@ TODO:
 - webgl if your use-case maps well to fragment shaders
 - webgpu looks promising but still early days
 - just dont run heavy compute on the main thread!
+
+## Sources
+
+- WebGPU: https://github.com/BenjaminAster/WebGPU-Mandelbrot
+- SIMD: https://github.com/skeeto/mandel-simd
