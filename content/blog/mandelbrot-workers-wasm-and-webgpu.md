@@ -1,7 +1,7 @@
 ---
 title: Mandelbrot, Workers, WASM and WebGPU
 publishedAt: 2023-07-01
-tags: ["javascript", "typescript"]
+tags: ["javascript", "typescript", "webworkers", "wasm", "webgpu"]
 ---
 # Mandelbrot, Workers, WASM and WebGPU
 
@@ -29,34 +29,22 @@ And as a bonus we now have an up-and-coming contender on the block: WebGPU.
 
 ## WASM
 
-- naive implementation just as slow as vanilla
-- assemblyscript kinda redundant
 - can be nerfed or disabled by browser security settings
-
-TODO:
-- try rust?
-- simd?
-- native wasm threads?
+- SIMD provides ~2x speedup in chromium
+- runs about as fast as native C in Firefox
 
 ## Worker
 
 - embarassingly parallel
-- naive distribution
 
 ## WASM Worker
 
-- literally wasm+workers, nothing more to be said
-
-TODO: same as WASM
+- wasm+simd+workers=immensly fast
 
 ## WebGL
 
 - real-time performance
 - works pretty much everywhere
-- limited precision
-
-TODO
-- multisampling
 
 ## WebGPU
 
@@ -65,18 +53,13 @@ TODO
 - doesn't work everywhere yet
 - still beta, firefox nightly crashed a lot
 
-TODO:
-- multisampling
-- compute?
-- offcanvas?
-
 ## Conclusion?
 
 - workers are great, not just for parallel but also for non-blocking compute
-- wasm only if you have like a C or Rust lib, or require lower-level compute features
+- wasm is great, lets you use C/rust libraries, and low-level CPU features like SIMD
 - webgl if your use-case maps well to fragment shaders
 - webgpu looks promising but still early days
-- just dont run heavy compute on the main thread!
+- just whatever you do dont run heavy compute on the main thread!
 
 ## Sources
 
