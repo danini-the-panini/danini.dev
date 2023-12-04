@@ -89,9 +89,7 @@ On the plus side, WebGL has been implemented in all major browsers for years now
 
 While WebGL is mature and well supported, it has started to show its age, while desktop graphics libraries have moved on, for example DirectX 12, Vulkan, and Apple's Metal, which offer more features, lower level access to hardware, and improved performance. For this reason, WebGPU began development in order to expose these new interfaces to browsers.
 
-The shader code WGSL is more expressive and readable than GLSL. Debugging is easier with more useful error messages. Performance is comparable to WebGL, although it is difficult to measure such tiny periods of time. It is much easier to calculate average framerate than individual frame times. (TODO: do this pls)
-
-Moreover, WebGPU provides a whole new architecture using pipelines. This could allow for complex multi-stage operations, for example implementing histogram rendering of the Mandelbrot set.
+The shader code WGSL is more expressive and readable than GLSL. Debugging is easier with more useful error messages. Performance is comparable to WebGL, although it is difficult to measure such tiny periods of time. It is much easier to calculate average framerate than individual frame times. Even then, I could not determine how much of a performance improvmenet WebGPU is over WebGL, if any.
 
 The downside is that, at the time of writing, WebGL is far from complete. Most major browsers have it behind flags, don't support it on all operating systems, or just haven't implemented it at all. For example, I had to install Firefox Nightly to develop for WebGPU, and even then it crashed a lot. Chrome wasn't a piece of cake, either. I had to google for hours to find out the right incantation to get it to run WebGPU in linux. If you're on Windows, however, Chrome supports it out of the box.
 
