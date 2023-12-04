@@ -1,6 +1,6 @@
 ---
 title: Mandelbrot, Workers, WASM and WebGPU
-publishedAt: 2023-07-01
+publishedAt: 2023-12-04
 tags: ["javascript", "typescript", "webworkers", "wasm", "webgpu"]
 ---
 # Mandelbrot, Web Workers, WASM, and WebGPU
@@ -57,25 +57,43 @@ After thread-pooling and shared memory, I think we're about as fast as we can re
 
 ## WASM
 
-- can be nerfed or disabled by browser security settings
-- SIMD provides almost 4x speedup
-- runs about as fast as native C in Firefox
+WebAssembly (WASM) has matured a lot over the years. It is basically a byte-code assembly language for the web. Every major browser now supports pretty much all of its features, and most system languages can target it for compilation.
+
+The use case for WASM is usually to use native libraries, typically written in something like C, in the browser. For example, you might want to use libzip to create zip files without calling a server. Similarly, you might have a desktop application written in a systems programming language, and you want to port it to the web. Most of the code can compile directly to WASM, and all you need to do is provide a user interface, or the UI may even be able to render directly to a canvas or something. Even OpenGL code can be converted to WebGL during the compilation process, allowing native games to be compiled to run in the web with little to no modification.
+
+Another use case for WASM is performance. While normally it is roughly the same as regular JavaScript, since JS has been optimised for decades, it has some features that JavaScript does not, that gives it an edge. The most notable one of those features is something call SIMD, or Single Instruction Multiple Data. SIMD is a set of special CPU instructions that allow you to do multiple calculations in a single instruction, for example, multiply four pairs of numbers at the same time. This can potentially quadruple your performance if you are doing lots of basic arithmetic.
+
+Mandelbrot is a perfect candidate for the use of SIMD, due to its embarrassingly parallel nature. We can easily modify the logic to use SIMD instructions to compute four pixels at a time. This unsurprisingly does result in roughly four times the performance.
+
+In fact, when compared to a similar implementation in C, I found that it ran just as fast in Firefox as it does natively. Native performance in the browser!? What are the downsides?
+
+Unfortunately, even though every major browser now support WASM, and most of its features including SIMD, there is still the issue of security. Browsers will disable WASM under certain circumstances, for example in Microsoft's Edge, it is disabled when the highest security mode is chosen. For this reason, you cannot reliably depend on WASM being able to run for all your users.
 
 ## WASM + WebWorkers
 
-- wasm+simd+workers=immensly fast
+Yes, WASM can run in WebWorkers. The only issue is the memory management. While we cannot use SharedArrayBuffer with WASM, we can create contiguous WebAssembly.Memory shared between all WASM workers.
+
+The result is a fourfold performance improvements on top of parallelism. It's fast enough to be almost realtime for low iterations and a fast enough processor.
+
+This is pretty much as fast as it gets for a CPU-only implementation.
 
 ## WebGL
 
-- real-time performance
-- works pretty much everywhere
+For an embarrassingly parallel maths problem such as Mandelbrot, it seems almost idiotic to bother implementing it on the CPU. Indeed, I only did so for comparison, and as an example. Some processing is too complex or doesn't map well to a GPU.
+
+Since Mandelbrot is a 2-dimensional image, it is relatively straightforward to create a naive implementation in GLSL, WebGL's shader language. All we need to do is render a single rectangle the size of the canvas, and do all the calculations in the Fragment shader. The result is orders of magnitude faster than CPU-based implementations, and runs in realtime on all but the highest iteration counts.
+
+On the plus side, WebGL has been implemented in all major browsers for years now, and is rarely disabled for security reasons.
 
 ## WebGPU
 
-- real-time performance
-- code is nicer than WebGL, especially WGSL
-- doesn't work everywhere yet
-- still beta, firefox nightly crashed a lot
+While WebGL is mature and well supported, it has started to show its age, while desktop graphics libraries have moved on, for example DirectX 12, Vulkan, and Apple's Metal, which offer more features, lower level access to hardware, and improved performance. For this reason, WebGPU began development in order to expose these new interfaces to browsers.
+
+The shader code WGSL is more expressive and readable than GLSL. Debugging is easier with more useful error messages. Performance is comparable to WebGL, although it is difficult to measure such tiny periods of time. It is much easier to calculate average framerate than individual frame times. (TODO: do this pls)
+
+The downside is that, at the time of writing, WebGL is far from complete. Most major browsers have it behind flags, don't support it on all operating systems, or just haven't implemented it at all. For example, I had to install Firefox Nightly to develop for WebGPU, and even then it crashed a lot. Chrome wasn't a piece of cake, either. I had to google for hours to find out the right incantation to get it to run WebGPU in linux. If you're on Windows, however, Chrome supports it out of the box.
+
+Hopefully in the near future it will be as widely supported as WASM.
 
 ## Conclusion?
 
