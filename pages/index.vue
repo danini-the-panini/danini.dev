@@ -57,10 +57,6 @@ definePageMeta({
     </nav>
 
     <nav class="social-links">
-      <a href="https://toot.cat/@danini" target="_blank" rel="me noreferrer noopener">
-        <MastoIcon />
-        <span>@danini@toot.cat</span>
-      </a>
       <a href="https://github.com/danini-the-panini" target="_blank" rel="noreferrer noopener">
         <GithubIcon />
         <span>@danini-the-panini</span>
