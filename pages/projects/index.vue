@@ -3,6 +3,7 @@ import HammerIcon from '~/assets/hammer2.svg'
 import GithubIcon from '~/assets/github_smol.svg'
 import BookIcon from '~/assets/book.svg'
 import MicrophoneIcon from '~/assets/microphone.svg'
+import LinkIcon from "~/assets/link.svg"
 
 useHead({
   title: 'Projects',
@@ -46,6 +47,10 @@ defineOgImageStatic({
           <NuxtLink :to="`/talks/${project.talk}`" v-if="project.talk">
             <MicrophoneIcon />
             <span>Talk</span>
+          </NuxtLink>
+          <NuxtLink :to="project.link" v-if="project.link">
+            <LinkIcon />
+            <span>Link</span>
           </NuxtLink>
         </div>
       </li>
