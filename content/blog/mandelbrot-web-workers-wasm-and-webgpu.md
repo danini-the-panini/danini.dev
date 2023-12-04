@@ -61,7 +61,7 @@ WebAssembly (WASM) has matured a lot over the years. It is basically a byte-code
 
 The use case for WASM is usually to use native libraries, typically written in something like C, in the browser. For example, you might want to use libzip to create zip files without calling a server. Similarly, you might have a desktop application written in a systems programming language, and you want to port it to the web. Most of the code can compile directly to WASM, and all you need to do is provide a user interface, or the UI may even be able to render directly to a canvas or something. Even OpenGL code can be converted to WebGL during the compilation process, allowing native games to be compiled to run in the web with little to no modification.
 
-Another use case for WASM is performance. While normally it is roughly the same as regular JavaScript, since JS has been optimised for decades, it has some features that JavaScript does not, that gives it an edge. The most notable one of those features is something call SIMD, or Single Instruction Multiple Data. SIMD is a set of special CPU instructions that allow you to do multiple calculations in a single instruction, for example, multiply four pairs of numbers at the same time. This can potentially quadruple your performance if you are doing lots of basic arithmetic.
+Another use case for WASM is performance. While normally it is roughly the same as regular JavaScript, since JS has been optimised for decades, it has some features that JavaScript does not, that gives it an edge. The most notable one of those features is something call SIMD, or Single Instruction Multiple Data. SIMD is a set of special CPU instructions that allow you to do multiple calculations in a single instruction. For example, multiply four pairs of numbers at the same time, or perform vector calculation in a single step. This can potentially quadruple your performance if you are doing lots of basic arithmetic.
 
 Mandelbrot is a perfect candidate for the use of SIMD, due to its embarrassingly parallel nature. We can easily modify the logic to use SIMD instructions to compute four pixels at a time. This unsurprisingly does result in roughly four times the performance.
 
@@ -91,17 +91,17 @@ While WebGL is mature and well supported, it has started to show its age, while 
 
 The shader code WGSL is more expressive and readable than GLSL. Debugging is easier with more useful error messages. Performance is comparable to WebGL, although it is difficult to measure such tiny periods of time. It is much easier to calculate average framerate than individual frame times. (TODO: do this pls)
 
+Moreover, WebGPU provides a whole new architecture using pipelines. This could allow for complex multi-stage operations, for example implementing histogram rendering of the Mandelbrot set.
+
 The downside is that, at the time of writing, WebGL is far from complete. Most major browsers have it behind flags, don't support it on all operating systems, or just haven't implemented it at all. For example, I had to install Firefox Nightly to develop for WebGPU, and even then it crashed a lot. Chrome wasn't a piece of cake, either. I had to google for hours to find out the right incantation to get it to run WebGPU in linux. If you're on Windows, however, Chrome supports it out of the box.
 
 Hopefully in the near future it will be as widely supported as WASM.
 
 ## Conclusion?
 
-- workers are great, not just for parallel but also for non-blocking compute
-- wasm is great, lets you use C/rust libraries, and low-level CPU features like SIMD
-- webgl if your use-case maps well to fragment shaders
-- webgpu looks promising but still early days
-- just whatever you do dont run heavy compute on the main thread!
+There are many options for doing heavy calculation in the browser. Even if it isn't something you can run in parallel, WebWorkers allow you so offload that work onto a separate thread, leaving the main thread free to update the frontend without hanging. WASM lets you access libraries previously unavailable in the browser, and with features like SIMD, can potentially speed up operations. If your computation maps well to highly parallel floating-point arithmetic, you might be able to implement it on the GPU. In the future, you might be able to put together complex pipelines of calculations using WebGPU.
+
+Just whatever you do, don't run heave computations on the main thread!
 
 ## Sources
 
