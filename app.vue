@@ -55,7 +55,6 @@ defineOgImageStatic({
       </div>
 
       <div class="links social-links">
-        <a href="https://toot.cat/@danini" target="_blank" rel="me noreferrer noopener"><MastoIcon /></a>
         <a href="https://github.com/danini-the-panini" target="_blank" rel="me noreferrer noopener"><GithubIcon /></a>
       </div>
     </nav>
