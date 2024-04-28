@@ -1,6 +1,6 @@
 ---
 title: Mandelbrot, Workers, WASM and WebGPU
-publishedAt: 2023-12-04
+publishedAt: 2024-04-28
 tags: ["javascript", "typescript", "webworkers", "wasm", "webgpu"]
 ---
 # Mandelbrot, Web Workers, WASM, and WebGPU
