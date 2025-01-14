@@ -15,7 +15,8 @@
     "@types/node": "^22.10.6",
     "nuxt": "^3.15.1",
     "sass-embedded": "^1.83.4",
-    "vite-svg-loader": "^5.1.0"
+    "vite-svg-loader": "^5.1.0",
+    "vue-router": "4"
   },
   "dependencies": {
     "nuxt-og-image": "^4.0.3",
