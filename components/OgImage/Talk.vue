@@ -19,6 +19,8 @@ const imageStyle = {
     width: '100%',
     height: '100%',
   }">
-    <img :src="image" width="900" height="500" :style="imageStyle" />
+    <div>
+      <img :src="image" width="900" height="500" :style="imageStyle" />
+    </div>
   </div>
 </template>

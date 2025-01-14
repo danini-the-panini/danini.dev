@@ -5,11 +5,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxtjs/google-fonts',
-    '@nuxt/image'
-  ],
-
-  extends: [
-    'nuxt-seo-kit'
+    '@nuxt/image',
+    '@nuxtjs/seo'
   ],
 
   vite: {
@@ -20,15 +17,6 @@ export default defineNuxtConfig({
           additionalData: '@use "@/assets/additional.scss" as *;'
         }
       }
-    }
-  },
-
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-      ]
     }
   },
 
@@ -71,7 +59,7 @@ export default defineNuxtConfig({
       siteUrl: 'https://danini.dev',
       siteName: 'Dani Smith',
       siteDescription: 'Full-stack ruby developer, drama queen, 90s kid',
-      language: 'en-ZA'
+      defaultLocale: 'en-ZA'
     }
   },
 
@@ -85,5 +73,7 @@ export default defineNuxtConfig({
 
   experimental: {
     componentIslands: true
-  }
+  },
+
+  compatibilityDate: '2025-01-14'
 })

@@ -14,9 +14,9 @@ useHead({
 useSeoMeta({
   description: 'Things I have built, hacked, or tinkered with in my lifetime'
 })
-defineOgImageStatic({
-  component: 'DaniniOgImage',
-  text: 'projects'
+defineOgImage({
+  component: 'Danini',
+  props: { text: 'projects' }
 })
 </script>
 

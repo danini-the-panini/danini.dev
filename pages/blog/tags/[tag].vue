@@ -11,9 +11,9 @@ useHead({
     class: 'blog tag'
   }
 })
-defineOgImageStatic({
-  component: 'TagOgImage',
-  tag
+defineOgImage({
+  component: 'Tag',
+  props: { tag }
 })
 </script>
 
