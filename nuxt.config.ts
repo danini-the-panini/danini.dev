@@ -28,8 +28,21 @@ export default defineNuxtConfig({
     }
   },
 
+  ogImage: {
+    zeroRuntime: true
+  },
+,
   image: {
     provider: 'ipx'
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+      ]
+    }
   },
 
   app: {
