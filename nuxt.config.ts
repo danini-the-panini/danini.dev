@@ -54,13 +54,11 @@ export default defineNuxtConfig({
     }
   },
 
-  runtimeConfig: {
-    public: {
-      siteUrl: 'https://danini.dev',
-      siteName: 'Dani Smith',
-      siteDescription: 'Full-stack ruby developer, drama queen, 90s kid',
-      defaultLocale: 'en-ZA'
-    }
+  site: {
+    url: 'https://danini.dev',
+    name: 'Dani Smith',
+    descripion: 'Full-stack ruby developer, drama queen, 90s kid',
+    defaultLocale: 'en-ZA'
   },
 
   linkChecker: {
