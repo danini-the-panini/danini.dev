@@ -1,20 +1,13 @@
-# Content v2 Minimal Starter
+# [danini.dev](https://danini.dev)
 
-Look at the [Content documentation](https://content-v2.nuxtjs.org/) to learn more.
+This is my personal website.
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+bun install
 ```
 
 ## Development Server
@@ -22,7 +15,7 @@ pnpm install
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 ## Production
@@ -30,13 +23,11 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+bun run build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+bun run preview
 ```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
