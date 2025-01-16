@@ -29,9 +29,11 @@ function compareFn(a, b) {
         <ul>
           <li v-for="link of navigation[0].children.sort(compareFn)" :key="link._path">
             <Card>
-              <h2><NuxtLink :to="link._path">{{ link.title }}</NuxtLink></h2>
-              <TagsList :tags="link.tags" />
-              <span class="date">{{formatDate(link.publishedAt)}}</span>
+              <div class="card-content">
+                <h2><NuxtLink :to="link._path">{{ link.title }}</NuxtLink></h2>
+                <TagsList :tags="link.tags" />
+                <span class="date">{{formatDate(link.publishedAt)}}</span>
+              </div>
             </Card>
           </li>
         </ul>
@@ -135,7 +137,7 @@ ul {
   gap: 16px;
 }
 
-.card {
+.card-content {
   display: grid;
   grid-template-areas: 'title title' 'tags date';
   grid-template-columns: 1fr auto;
