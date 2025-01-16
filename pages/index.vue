@@ -22,22 +22,24 @@ definePageMeta({
 
 <template>
   <main>
-    <dl>
-      <dt>Species</dt>
-      <dd>Human</dd>
+    <div class="card">
+      <dl>
+        <dt>Species</dt>
+        <dd>Human</dd>
 
-      <dt>Designation</dt>
-      <dd>Dani Smith</dd>
+        <dt>Designation</dt>
+        <dd>Dani Smith</dd>
 
-      <dt>Occupation</dt>
-      <dd>Full-Stack Developer</dd>
+        <dt>Occupation</dt>
+        <dd>Full-Stack Developer</dd>
 
-      <dt>Location</dt>
-      <dd>South Africa</dd>
+        <dt>Location</dt>
+        <dd>South Africa</dd>
 
-      <dt>Affiliation</dt>
-      <dd><a href="https://www.platform45.com" target="_blank" rel="noreferrer noopener">Platform45</a></dd>
-    </dl>
+        <dt>Affiliation</dt>
+        <dd><a href="https://www.platform45.com" target="_blank" rel="noreferrer noopener">Platform45</a></dd>
+      </dl>
+    </div>
 
     <nav class="nav-links">
       <NuxtLink to="/blog" class="blog">
@@ -85,45 +87,54 @@ main {
   overflow-x: hidden;
 }
 
-dl {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  background: white repeating-linear-gradient(transparent, transparent 1.5em, #CFEEFF 1.5em, #CFEEFF calc(1.5em + 1px));
-  border: 1px solid #000000;
-  box-shadow: 5px 7px 0px #000000;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  padding: 4px 16px 8px 32px;
-  width: fit-content;
-  position: relative;
+.card {
+  $hole-radius: 8px;
+  $hole-size: $hole-radius * 2;
+  $hole-left: 6px;
+  $hole-bottom: 24px;
+
   align-self: center;
-  margin: 0;
-  transform: translateY(0)
-}
+  box-shadow: 5px 7px 0px #000000;
+  position: relative;
+  transform: translateY(0);
 
-dl::before {
-  content: '';
-  position: absolute;
-  left: 26px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  display: block;
-  background-color: #FFDDF8;
-}
+  dl {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    background: white repeating-linear-gradient(transparent, transparent 1.5em, #CFEEFF 1.5em, #CFEEFF calc(1.5em + 1px));
+    border: 1px solid #000000;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 4px 16px 8px 32px;
+    width: fit-content;
+    position: relative;
+    margin: 0;
+    mask: radial-gradient(circle at calc($hole-left + $hole-radius) calc(100% - $hole-radius - $hole-bottom), black $hole-radius, white $hole-radius, white) luminance;
 
-dl::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  display: block;
-  left: 6px;
-  bottom: 24px;
-  border-radius: 50%;
-  background: #55ECC9;
-  border: 1px solid #000000;
-  box-shadow: inset 5px 7px 0px #000000;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 26px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      display: block;
+      background-color: #FFDDF8;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: $hole-size;
+    height: $hole-size;
+    display: block;
+    left: $hole-left;
+    bottom: $hole-bottom;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    box-shadow: inset 5px 7px 0px #000000;
+  }
 }
 
 dt {
@@ -266,7 +277,7 @@ dt {
   transition: transition-page(opacity);
   overflow: hidden;
 
-  dl, .nav-links, .social-links {
+  .card, .nav-links, .social-links {
     transition: transition-page(transform);
   }
 }
@@ -275,7 +286,7 @@ dt {
 .home-leave-to {
   opacity: 0.999;
 
-  dl {
+  .card {
     transform: translateX(-100vw);
 
     @media (min-width: 40em) {
@@ -302,7 +313,7 @@ dt {
     overflow: visible;
   }
 
-  dl {
+  .card {
     transform: rotate(3deg);
   }
 
