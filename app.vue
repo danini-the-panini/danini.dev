@@ -4,6 +4,7 @@ import HammerIcon from "~/assets/hammer.svg"
 import MicrophoneIcon from "~/assets/microphone.svg"
 import MastoIcon from "~/assets/masto.svg"
 import GithubIcon from "~/assets/github.svg"
+import BskyIcon from "~/assets/bsky.svg"
 import BackgroundBg from "~/assets/background-bg.svg"
 import BackgroundFg from "~/assets/background-fg.svg"
 
@@ -51,7 +52,12 @@ defineOgImage({
       </div>
 
       <div class="links social-links">
-        <a href="https://github.com/danini-the-panini" target="_blank" rel="me noreferrer noopener"><GithubIcon /></a>
+        <a href="https://github.com/danini-the-panini" target="_blank" rel="me noreferrer noopener">
+          <GithubIcon />
+        </a>
+        <a href="https://bsky.app/profile/danini.dev" target="_blank" rel="noreferrer noopener">
+          <BskyIcon />
+        </a>
       </div>
     </nav>
   </header>
