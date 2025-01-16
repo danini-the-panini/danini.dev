@@ -18,6 +18,7 @@ main {
 
   @media (min-width: 40em) {
     box-shadow: none;
+    border-bottom: 0;
     background: transparent;
     padding: 8px 16px 64px;
   }
