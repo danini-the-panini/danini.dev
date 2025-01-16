@@ -112,7 +112,7 @@ h2 {
         text-decoration-color: #FF4FAA;
 
         &:before {
-          content: '🖙';
+          content: '☞';
           transform: translateX(-30px);
           text-decoration: none;
           position: absolute;
