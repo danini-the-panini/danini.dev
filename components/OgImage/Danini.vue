@@ -8,12 +8,12 @@ defineOptions({
 </script>
 
 <template>
-  <div class="container w-full h-full flex items-center justify-center" :style="{
+  <div class="container h-full items-center justify-center" :style="{
     backgroundColor: '#55ECC9',
     backgroundImage: 'url(https://danini.dev/images/og-image-bg.png)',
-    width: '100%',
-    height: '100%',
   }">
-    <img :src="`/images/${text}-large.png`" />
+    <div>
+      <img :src="`/images/${text}-large.png`" />
+    </div>
   </div>
 </template>

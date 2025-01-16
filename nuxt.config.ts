@@ -5,11 +5,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxtjs/google-fonts',
-    '@nuxt/image'
-  ],
-
-  extends: [
-    'nuxt-seo-kit'
+    '@nuxt/image',
+    '@nuxtjs/seo'
   ],
 
   vite: {
@@ -23,15 +20,6 @@ export default defineNuxtConfig({
     }
   },
 
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-      ]
-    }
-  },
-
   googleFonts: {
     families: {
       Roboto: [400, 700],
@@ -40,8 +28,21 @@ export default defineNuxtConfig({
     }
   },
 
+  ogImage: {
+    zeroRuntime: true
+  },
+
   image: {
     provider: 'ipx'
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+      ]
+    }
   },
 
   app: {
@@ -66,13 +67,11 @@ export default defineNuxtConfig({
     }
   },
 
-  runtimeConfig: {
-    public: {
-      siteUrl: 'https://danini.dev',
-      siteName: 'Dani Smith',
-      siteDescription: 'Full-stack ruby developer, drama queen, 90s kid',
-      language: 'en-ZA'
-    }
+  site: {
+    url: 'https://danini.dev',
+    name: 'Dani Smith',
+    descripion: 'Full-stack ruby developer, drama queen, 90s kid',
+    defaultLocale: 'en-ZA'
   },
 
   linkChecker: {
@@ -85,5 +84,7 @@ export default defineNuxtConfig({
 
   experimental: {
     componentIslands: true
-  }
+  },
+
+  compatibilityDate: '2025-01-14'
 })

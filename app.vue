@@ -10,17 +10,13 @@ import BackgroundFg from "~/assets/background-fg.svg"
 useHead({
   themeColor: '#55ECC9'
 })
-defineOgImageStatic({
-  component: 'DaniniOgImage',
-  text: 'danini'
+defineOgImage({
+  component: 'Danini',
+  props: { text: 'danini' }
 })
 </script>
 
 <template>
-  <Head>
-    <SeoKit />
-  </Head>
-
   <div class="background">
     <div class="white"></div>
     <BackgroundBg />

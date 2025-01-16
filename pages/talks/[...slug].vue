@@ -26,7 +26,7 @@ definePageMeta({
 <template>
   <ArticleLayout>
     <ContentQuery :path="route.path" v-slot="{ data }" find="one">
-      <OgImageStatic component="TalkOgImage" :image="`/images${route.path}.png`" />
+      <OgImage component="Talk" :image="`/images${route.path}.png`" />
       <header>
         <NuxtLink to="/talks"><MicrophoneIcon /></NuxtLink>
         <h1>{{data.title}}</h1>

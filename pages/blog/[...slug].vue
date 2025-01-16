@@ -8,9 +8,9 @@ useHead({
     class: 'blog post'
   }
 })
-defineOgImageStatic({
-  component: 'DaniniOgImage',
-  text: 'blog'
+defineOgImage({
+  component: 'Danini',
+  props: { text: 'blog' }
 })
 </script>
 
@@ -18,7 +18,7 @@ defineOgImageStatic({
   <ArticleLayout>
       <header>
         <ContentQuery :path="route.path" v-slot="{ data }" find="one">
-          <OgImageStatic component="PostOgImage" :title="data.title" :date="data.publishedAt"/>
+          <OgImage component="Post" :title="data.title" :date="data.publishedAt"/>
           <NuxtLink to="/blog" class="back">
             <BookIcon />
           </NuxtLink>
