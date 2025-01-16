@@ -4,6 +4,7 @@ import HammerIcon from "~/assets/hammer2.svg"
 import MicrophoneIcon from "~/assets/microphone2.svg"
 import MastoIcon from "~/assets/masto.svg"
 import GithubIcon from "~/assets/github.svg"
+import BskyIcon from "~/assets/bsky.svg"
 import ManiculeIcon from "~/assets/manicule.svg"
 
 useHead({
@@ -60,6 +61,10 @@ definePageMeta({
       <a href="https://github.com/danini-the-panini" target="_blank" rel="noreferrer noopener">
         <GithubIcon />
         <span>@danini-the-panini</span>
+      </a>
+      <a href="https://bsky.app/profile/danini.dev" target="_blank" rel="noreferrer noopener">
+        <BskyIcon />
+        <span>@danini.dev</span>
       </a>
     </nav>
   </main>
