@@ -63,7 +63,7 @@ export default defineNuxtConfig({
     },
     highlight: {
       theme: 'github-dark',
-      preload: ['bash', 'applescript', 'ruby', 'javascript', 'typescript']
+      langs: ['bash', 'applescript', 'ruby', 'javascript', 'typescript']
     }
   },
 

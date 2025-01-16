@@ -112,7 +112,6 @@ header {
     font-family: SFMono-Regular,Cascadia Code,Consolas,Liberation Mono,Menlo,Monaco,"Andale Mono","Ubuntu Mono",monospace;
     border-radius: 4px;
     padding: 0 4px;
-    white-space: nowrap;
     display: inline-block;
     vertical-align: baseline;
     font-size: 0.9em;
