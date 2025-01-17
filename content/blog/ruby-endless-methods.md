@@ -49,7 +49,7 @@ class Foo
 end
 ```
 
-While this does take a little more typing, as well as repeatintg the method name, I personally prefer this. Firstly, the methods are now defined with their charactaristic `def` keyword. Secondly, the methods open themselves up for future modification without having to first removal from the delegate macro and subsequent re-definition.
+While this does take a little more typing, as well as repeating the method name, I personally prefer this. Firstly, the methods are now defined with their charactaristic `def` keyword. Secondly, the methods open themselves up for future modification without having to first removal from the delegate macro and subsequent re-definition.
 
 I find the repitition isn't so bad, considering most modern editors support multi-cursor edits, making it trivial to rename the method, or rename the receiver.
 
